@@ -31,6 +31,8 @@
 
 #include "krhelpers.h"
 
+#if defined(KRAKEN_USE_OPENGL)
+
 #if defined(DEBUG) || defined(_DEBUG)
 #define GLDEBUG(x) \
 x; \
@@ -68,3 +70,5 @@ void SetUniform(GLint location, const Matrix4 &v)
 }
 
 } // namespace kraken
+
+#endif // defined(KRAKEN_USE_OPENGL)
