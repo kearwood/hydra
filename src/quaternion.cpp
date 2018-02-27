@@ -274,7 +274,7 @@ Quaternion Quaternion::operator -() const {
     return Quaternion::Create(-c[0], -c[1], -c[2], -c[3]);
 }
 
-Quaternion Normalize(const Quaternion &v1) {
+Quaternion Quaternion::Normalize(const Quaternion &v1) {
     float inv_magnitude = 1.0f / sqrtf(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2] + v1[3] * v1[3]);
     return Quaternion::Create(
         v1[0] * inv_magnitude,
@@ -292,7 +292,7 @@ void Quaternion::normalize() {
     c[3] *= inv_magnitude;
 }
 
-Quaternion Conjugate(const Quaternion &v1) {
+Quaternion Quaternion::Conjugate(const Quaternion &v1) {
     return Quaternion::Create(v1[0], -v1[1], -v1[2], -v1[3]);
 }
 
@@ -300,6 +300,15 @@ void Quaternion::conjugate() {
     c[1] = -c[1];
     c[2] = -c[2];
     c[3] = -c[3];
+}
+
+void Quaternion::invert() {
+  conjugate();
+  normalize();
+}
+
+Quaternion Quaternion::Invert(const Quaternion &v1) {
+  return Normalize(Conjugate(v1));
 }
 
 Matrix4 Quaternion::rotationMatrix() const {
@@ -337,6 +346,39 @@ Quaternion Quaternion::FromAngleAxis(const Vector3 &axis, float angle)
     float ha = angle * 0.5f;
     float sha = sin(ha);
     return Quaternion::Create(cos(ha), axis.x * sha, axis.y * sha, axis.z * sha);
+}
+
+Quaternion Quaternion::FromRotationMatrix(const Matrix4 &m)
+{
+// see http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
+  const float trace = m[0] + m[5] + m[10];
+  float w, x, y, z;
+  if (trace > 0.0) {
+    const float s = 0.5f / sqrt(trace + 1.0f);
+    w = 0.25f / s;
+    x = (m[9] - m[6]) * s;
+    y = (m[2] - m[8]) * s;
+    z = (m[4] - m[1]) * s;
+  } else if (m[0] > m[5] && m[0] > m[10]) {
+    const float s = 2.0f * sqrt(1.0f + m[0] - m[5] - m[10]);
+    w = (m[9] - m[6]) / s;
+    x = 0.25f * s;
+    y = (m[1] + m[4]) / s;
+    z = (m[2] + m[8]) / s;
+  } else if (m[5] > m[10]) {
+    const float s = 2.0 * sqrt(1.0f + m[5] - m[0] - m[10]);
+    w = (m[2] - m[8]) / s;
+    x = (m[1] + m[4]) / s;
+    y = 0.25f * s;
+    z = (m[6] + m[9]) / s;
+  } else {
+    const float s = 2.0 * sqrt(1.0f + m[10] - m[0] - m[5]);
+    w = (m[4] - m[1]) / s;
+    x = (m[2] + m[8]) / s;
+    y = (m[6] + m[9]) / s;
+    z = 0.25f * s;
+  }
+   return Quaternion::Create(w, x, y, z);
 }
 
 float Quaternion::Dot(const Quaternion &v1, const Quaternion &v2)

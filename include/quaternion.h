@@ -86,8 +86,12 @@ public:
     
   void conjugate();
   static Quaternion Conjugate(const Quaternion &v1);
+
+  void invert();
+  static Quaternion Invert(const Quaternion &v1);
     
   static Quaternion FromAngleAxis(const Vector3 &axis, float angle);
+  static Quaternion FromRotationMatrix(const Matrix4 &m);
   static Quaternion Lerp(const Quaternion &a, const Quaternion &b, float t);
   static Quaternion Slerp(const Quaternion &a, const Quaternion &b, float t);
   static float Dot(const Quaternion &v1, const Quaternion &v2);
