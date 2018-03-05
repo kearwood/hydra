@@ -1,6 +1,8 @@
 #ifndef KRHELPERS_H
 #define KRHELPERS_H
 
+#if defined(KRAKEN_USE_OPENGL)
+
 #if defined(_WIN32) || defined(_WIN64)
 #include <GL/glew.h>
 #elif defined(__linux__) || defined(__unix__) || defined(__posix__)
@@ -12,6 +14,8 @@
 #include <OpenGL/gl3ext.h>
 #endif
 
+#endif // defined(KRAKEN_USE_OPENGL)
+
 #include "../include/kraken-math.h"
 
 #define KRMIN(x,y) ((x) < (y) ? (x) : (y))
@@ -22,11 +26,13 @@
 float const PI = 3.141592653589793f;
 float const D2R = PI * 2 / 360;
 
+#if defined(KRAKEN_USE_OPENGL)
 namespace kraken {
   void SetUniform(GLint location, const Vector2 &v);
   void SetUniform(GLint location, const Vector3 &v);
   void SetUniform(GLint location, const Vector4 &v);
   void SetUniform(GLint location, const Matrix4 &v);
 } // namespace kraken
+#endif // defined(KRAKEN_USE_OPENGL)
 
 #endif
