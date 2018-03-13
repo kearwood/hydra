@@ -137,6 +137,7 @@ void Matrix4::perspective(float fov, float aspect, float nearz, float farz) {
 /* Perform translation operations on a matrix */
 void Matrix4::translate(float x, float y, float z) {
     Matrix4 newMatrix; // Create new identity matrix
+    newMatrix.init();
     
     newMatrix.c[12] = x;
     newMatrix.c[13] = y;
@@ -182,6 +183,7 @@ void Matrix4::rotate(float angle, AXIS axis) {
      */
     
     Matrix4 newMatrix; // Create new identity matrix
+    newMatrix.init();
     
     newMatrix.c[cos1[axis]] = cos(angle);
     newMatrix.c[sin1[axis]] = -sin(angle);
@@ -199,6 +201,7 @@ void Matrix4::rotate(const Quaternion &q)
 /* Scale matrix by separate x, y, and z amounts */
 void Matrix4::scale(float x, float y, float z) {
     Matrix4 newMatrix; // Create new identity matrix
+    newMatrix.init();
     
     newMatrix.c[0] = x;
     newMatrix.c[5] = y;
@@ -316,6 +319,7 @@ Vector4 Matrix4::Dot4(const Matrix4 &m, const Vector4 &v) {
 #ifdef KRAKEN_USE_ARM_NEON
 
     Vector4 d;
+    d.init();
     asm volatile (
                   "vld1.32                {d0, d1}, [%1]                  \n\t"   //Q0 = v
                   "vld1.32                {d18, d19}, [%0]!               \n\t"   //Q1 = m
@@ -368,6 +372,7 @@ Vector3 Matrix4::DotWDiv(const Matrix4 &m, const Vector3 &v) {
 Matrix4 Matrix4::LookAt(const Vector3 &cameraPos, const Vector3 &lookAtPos, const Vector3 &upDirection)
 {
     Matrix4 matLookat;
+    matLookat.init();
     Vector3 lookat_z_axis = lookAtPos - cameraPos;
     lookat_z_axis.normalize();
     Vector3 lookat_x_axis = Vector3::Cross(upDirection, lookat_z_axis);
@@ -410,6 +415,7 @@ Matrix4 Matrix4::Transpose(const Matrix4 &m)
 Matrix4 Matrix4::Translation(const Vector3 &v)
 {
     Matrix4 m;
+    m.init();
     m[12] = v.x;
     m[13] = v.y;
     m[14] = v.z;
@@ -420,6 +426,7 @@ Matrix4 Matrix4::Translation(const Vector3 &v)
 Matrix4 Matrix4::Rotation(const Vector3 &v)
 {
     Matrix4 m;
+    m.init();
     m.rotate(v.x, X_AXIS);
     m.rotate(v.y, Y_AXIS);
     m.rotate(v.z, Z_AXIS);
@@ -429,6 +436,7 @@ Matrix4 Matrix4::Rotation(const Vector3 &v)
 Matrix4 Matrix4::Scaling(const Vector3 &v)
 {
     Matrix4 m;
+    m.init();
     m.scale(v);
     return m;
 }

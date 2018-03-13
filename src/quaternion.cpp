@@ -313,6 +313,7 @@ Quaternion Quaternion::Invert(const Quaternion &v1) {
 
 Matrix4 Quaternion::rotationMatrix() const {
     Matrix4 matRotate;
+    matRotate.init();
     
     /*
     Vector3 euler = eulerXYZ();
