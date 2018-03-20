@@ -441,5 +441,12 @@ Matrix4 Matrix4::Scaling(const Vector3 &v)
     return m;
 }
 
+Matrix4 Matrix4::Identity()
+{
+    Matrix4 m;
+    m.init();
+    return m;
+}
+
 } // namespace kraken
 

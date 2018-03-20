@@ -39,4 +39,9 @@ float SmoothStep(float a, float b, float t)
     return a * (1.0f - d) + b * d;
 }
 
+float Lerp(float a, float b, float t)
+{
+  return (a + (b - a) * t);
+}
+
 } // namespace kraken

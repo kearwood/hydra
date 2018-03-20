@@ -107,6 +107,7 @@ public:
   static Matrix4 Translation(const Vector3 &v);
   static Matrix4 Rotation(const Vector3 &v);
   static Matrix4 Scaling(const Vector3 &v);
+  static Matrix4 Identity();
 };
 static_assert(std::is_pod<Matrix4>::value, "kraken::Matrix4 must be a POD type.");
 
