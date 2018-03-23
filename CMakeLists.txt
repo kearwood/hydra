@@ -16,6 +16,7 @@ set(PUBLIC_HEADERS
   include/vector2.h
   include/vector3.h
   include/vector4.h
+  include/vector2i.h
 )
 
 set(SRCS
@@ -29,6 +30,7 @@ set(SRCS
   src/vector2.cpp
   src/vector3.cpp
   src/vector4.cpp
+  src/vector2i.cpp
 )
 
 add_library(krakenmath STATIC ${SRCS} ${PUBLIC_HEADERS})
