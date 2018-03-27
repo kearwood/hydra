@@ -36,6 +36,7 @@
 #include "vector3.h"
 #include "vector4.h"
 #include "vector2i.h"
+#include "matrix2.h"
 #include "matrix4.h"
 #include "quaternion.h"
 #include "aabb.h"
