@@ -137,15 +137,16 @@ void Matrix2::scale(float s) {
 
 /* Replace matrix with its inverse */
 bool Matrix2::invert() {
-    float det = 1.0f / (c[0] * c[3] + c[1] * c[2]);
+    float det = c[0] * c[3] - c[1] * c[2];
     if (det == 0) {
         return false;
     }
     float invdet = 1.0f / det;
+    float tmp = c[0];
     c[0] = c[3] * invdet;
     c[1] = -c[1] * invdet;
     c[2] = -c[2] * invdet;
-    c[3] = c[0] * invdet;
+    c[3] = tmp * invdet;
     
     return true;
 }

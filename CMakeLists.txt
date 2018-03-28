@@ -10,6 +10,7 @@ set(PUBLIC_HEADERS
   include/hitinfo.h
   include/kraken-math.h
   include/matrix2.h
+  include/matrix2x3.h
   include/matrix4.h
   include/quaternion.h
   include/scalar.h
@@ -25,6 +26,7 @@ set(SRCS
   src/hitinfo.cpp
   src/krhelpers.cpp
   src/matrix2.cpp
+  src/matrix2x3.cpp
   src/matrix4.cpp
   src/quaternion.cpp
   src/scalar.cpp
