@@ -30,6 +30,7 @@
 //
 
 #include "../include/kraken-math.h"
+#include "krhelpers.h"
 
 namespace kraken {
 
@@ -251,6 +252,14 @@ int Vector2i::Cross(const Vector2i &v1, const Vector2i &v2) {
 
 int Vector2i::Dot(const Vector2i &v1, const Vector2i &v2) {
     return v1.x * v2.x + v1.y * v2.y;
+}
+
+Vector2i Vector2i::Min(const Vector2i &v1, const Vector2i &v2) {
+  return Vector2i::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y));
+}
+
+Vector2i Vector2i::Max(const Vector2i &v1, const Vector2i &v2) {
+  return Vector2i::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y));
 }
 
 } // namepsace kraken

@@ -30,6 +30,7 @@
 //
 
 #include "../include/kraken-math.h"
+#include "krhelpers.h"
 
 namespace kraken {
 
@@ -310,6 +311,14 @@ Vector4 Vector4::Normalize(const Vector4 &v) {
 
 float Vector4::Dot(const Vector4 &v1, const Vector4 &v2) {
     return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
+}
+
+Vector4 Vector4::Min(const Vector4 &v1, const Vector4 &v2) {
+  return Vector4::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y), KRMIN(v1.z, v2.z), KRMIN(v1.w, v2.w));
+}
+
+Vector4 Vector4::Max(const Vector4 &v1, const Vector4 &v2) {
+  return Vector4::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y), KRMAX(v1.z, v2.z), KRMAX(v1.w, v2.w));
 }
 
 bool Vector4::operator >(const Vector4& b) const

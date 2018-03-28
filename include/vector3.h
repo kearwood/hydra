@@ -115,8 +115,10 @@ public:
   static Vector3 Normalize(const Vector3 &v);
     
   static Vector3 Cross(const Vector3 &v1, const Vector3 &v2);
-    
   static float Dot(const Vector3 &v1, const Vector3 &v2);
+  static Vector3 Min(const Vector3 &v1, const Vector3 &v2);
+  static Vector3 Max(const Vector3 &v1, const Vector3 &v2);
+
   static Vector3 Min();
   static Vector3 Max();
   static Vector3 Zero();

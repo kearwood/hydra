@@ -95,8 +95,10 @@ public:
   static Vector2i Normalize(const Vector2i &v);
 
   static int Cross(const Vector2i &v1, const Vector2i &v2);
-    
   static int Dot(const Vector2i &v1, const Vector2i &v2);
+  static Vector2i Min(const Vector2i &v1, const Vector2i &v2);
+  static Vector2i Max(const Vector2i &v1, const Vector2i &v2);
+
   static Vector2i Min();
   static Vector2i Max();
   static Vector2i Zero();

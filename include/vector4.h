@@ -90,6 +90,9 @@ public:
   static Vector4 Normalize(const Vector4 &v);
     
   static float Dot(const Vector4 &v1, const Vector4 &v2);
+  static Vector4 Min(const Vector4 &v1, const Vector4 &v2);
+  static Vector4 Max(const Vector4 &v1, const Vector4 &v2);
+
   static Vector4 Min();
   static Vector4 Max();
   static Vector4 Zero();

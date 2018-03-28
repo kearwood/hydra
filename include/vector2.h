@@ -94,8 +94,9 @@ public:
   static Vector2 Normalize(const Vector2 &v);
 
   static float Cross(const Vector2 &v1, const Vector2 &v2);
-    
   static float Dot(const Vector2 &v1, const Vector2 &v2);
+  static Vector2 Min(const Vector2 &v1, const Vector2 &v2);
+  static Vector2 Max(const Vector2 &v1, const Vector2 &v2);
   static Vector2 Min();
   static Vector2 Max();
   static Vector2 Zero();
