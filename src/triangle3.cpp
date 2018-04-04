@@ -109,7 +109,7 @@ void Triangle3::init(const Triangle3 &tri)
 {
     vert[0] = tri[0];
     vert[1] = tri[1];
-    vert[3] = tri[3];
+    vert[2] = tri[2];
 }
 
 
