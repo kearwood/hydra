@@ -133,7 +133,7 @@ void Matrix2x3::scale(float x, float y) {
     newMatrix.init();
     
     newMatrix.c[0] = x;
-    newMatrix.c[2] = y;
+    newMatrix.c[3] = y;
     
     *this *= newMatrix;
 }
