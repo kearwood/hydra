@@ -81,13 +81,21 @@ bool Matrix2x3::operator==(const Matrix2x3 &m) const {
 // Overload compound multiply operator
 Matrix2x3& Matrix2x3::operator*=(const Matrix2x3 &m) {
     float temp[6];
+/*
     temp[0] = c[0] * m[0] + c[2] * m[1];
     temp[1] = c[1] * m[0] + c[3] * m[1];
     temp[2] = c[0] * m[2] + c[2] * m[3];
     temp[3] = c[1] * m[2] + c[3] * m[3];
     temp[4] = c[0] * m[4] + c[2] * m[5] + c[4];
     temp[5] = c[1] * m[4] + c[3] * m[5] + c[5];
-    
+*/
+    temp[0] = m[0] * c[0] + m[2] * c[1];
+    temp[1] = m[1] * c[0] + m[3] * c[1];
+    temp[2] = m[0] * c[2] + m[2] * c[3];
+    temp[3] = m[1] * c[2] + m[3] * c[3];
+    temp[4] = m[0] * c[4] + m[2] * c[5] + m[4];
+    temp[5] = m[1] * c[4] + m[3] * c[5] + m[5];
+
     memcpy(c, temp, sizeof(float) * 6);
     return *this;
 }
