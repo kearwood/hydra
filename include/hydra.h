@@ -1,5 +1,6 @@
 //
-//  Kraken
+//  hydra.h
+//  Kraken Engine / Hydra
 //
 //  Copyright 2018 Kearwood Gilbert. All rights reserved.
 //
@@ -28,8 +29,8 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_H
-#define KRAKEN_H
+#ifndef KRAKEN_HYDRA_H
+#define KRAKEN_HYDRA_H
 
 #include "scalar.h"
 #include "vector2.h"
@@ -44,4 +45,4 @@
 #include "triangle3.h"
 #include "hitinfo.h"
 
-#endif // KRAKEN_H
+#endif // KRAKEN_HYDRA_H

@@ -16,7 +16,7 @@
 
 #endif // defined(KRAKEN_USE_OPENGL)
 
-#include "../include/kraken-math.h"
+#include "../include/hydra.h"
 
 #define KRMIN(x,y) ((x) < (y) ? (x) : (y))
 #define KRMAX(x,y) ((x) > (y) ? (x) : (y))

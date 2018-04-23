@@ -1,6 +1,6 @@
 //
 //  hitinfo.cpp
-//  Kraken
+//  Kraken Engine / Hydra
 //
 //  Copyright 2018 Kearwood Gilbert. All rights reserved.
 //
@@ -29,7 +29,7 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#include "../include/kraken-math.h"
+#include "../include/hydra.h"
 
 namespace kraken {
 
