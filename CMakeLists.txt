@@ -3,12 +3,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-project(kraken-math)
+project(hydra)
 
 set(PUBLIC_HEADERS
   include/aabb.h
   include/hitinfo.h
-  include/kraken-math.h
+  include/hydra.h
   include/matrix2.h
   include/matrix2x3.h
   include/matrix4.h
@@ -37,4 +37,4 @@ set(SRCS
   src/vector2i.cpp
 )
 
-add_library(krakenmath STATIC ${SRCS} ${PUBLIC_HEADERS})
+add_library(hydra STATIC ${SRCS} ${PUBLIC_HEADERS})

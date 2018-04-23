@@ -1,6 +1,6 @@
 //
 //  hitinfo.h
-//  Kraken
+//  Kraken Engine / Hydra
 //
 //  Copyright 2018 Kearwood Gilbert. All rights reserved.
 //
