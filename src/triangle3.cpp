@@ -112,6 +112,19 @@ void Triangle3::init(const Triangle3 &tri)
     vert[2] = tri[2];
 }
 
+Triangle3 Triangle3::Create(const Triangle3 &tri)
+{
+  Triangle3 r;
+  r.init(tri);
+  return r;
+}
+
+Triangle3 Triangle3::Create(const Vector3 &v1, const Vector3 &v2, const Vector3 &v3)
+{
+  Triangle3 r;
+  r.init(v1, v2, v3);
+  return r;
+}
 
 bool Triangle3::operator ==(const Triangle3& b) const
 {

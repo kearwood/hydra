@@ -63,6 +63,20 @@ void Matrix4::init(const Matrix4 &m) {
     memcpy(c, m.c, sizeof(float) * 16);
 }
 
+Matrix4 Matrix4::Create(float *pMat)
+{
+  Matrix4 r;
+  r.init(pMat);
+  return r;
+}
+
+Matrix4 Matrix4::Create(const Vector3 &new_axis_x, const Vector3 &new_axis_y, const Vector3 &new_axis_z, const Vector3 &new_transform)
+{
+  Matrix4 r;
+  r.init(new_axis_x, new_axis_y, new_axis_z, new_transform);
+  return r;
+}
+
 float *Matrix4::getPointer() {
     return c;
 }
@@ -115,7 +129,7 @@ void Matrix4::perspective(float fov, float aspect, float nearz, float farz) {
    
     memset(c, 0, sizeof(float) * 16);
     
-    float range= tan(fov * 0.5) * nearz;
+    float range= tan(fov * 0.5f) * nearz;
     c[0] = (2 * nearz) / ((range * aspect) - (-range * aspect));
     c[5] = (2 * nearz) / (2 * range);
     c[10] = -(farz + nearz) / (farz - nearz);
@@ -287,7 +301,7 @@ bool Matrix4::invert() {
         return false;
     }
     
-    det = 1.0 / det;
+    det = 1.0f / det;
     
     for (i = 0; i < 16; i++) {
         c[i] = inv[i] * det;

@@ -61,10 +61,11 @@ public:
   void init();
     
   void init(float *pMat);
-    
   void init(const Vector3 &new_axis_x, const Vector3 &new_axis_y, const Vector3 &new_axis_z, const Vector3 &new_transform);
-
   void init(const Matrix4 &m);
+
+  static Matrix4 Create(float *pMat);
+  static Matrix4 Create(const Vector3 &new_axis_x, const Vector3 &new_axis_y, const Vector3 &new_axis_z, const Vector3 &new_transform);
     
   // Overload comparison operator
   bool operator==(const Matrix4 &m) const;

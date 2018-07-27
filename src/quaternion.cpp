@@ -139,20 +139,20 @@ Vector3 Quaternion::eulerXYZ() const {
     double a2 = 2 * (c[0] * c[2] - c[1] * c[3]);
     if(a2 <= -0.99999) {
         return Vector3::Create(
-           2.0 * atan2(c[1], c[0]),
+           2.0f * atan2(c[1], c[0]),
            -PI * 0.5f,
            0
         );
     } else if(a2 >= 0.99999) {
         return Vector3::Create(
-           2.0 * atan2(c[1], c[0]),
+           2.0f * atan2(c[1], c[0]),
            PI * 0.5f,
            0
         );
     } else {
         return Vector3::Create(
              atan2(2 * (c[0] * c[1] + c[2] * c[3]), (1 - 2 * (c[1] * c[1] + c[2] * c[2]))),
-             asin(a2),
+             asinf(a2),
              atan2(2 * (c[0] * c[3] + c[1] * c[2]), (1 - 2 * (c[2] * c[2] + c[3] * c[3])))
          );
     }
@@ -326,17 +326,17 @@ Matrix4 Quaternion::rotationMatrix() const {
     // FINDME - Determine why the more optimal routine commented below wasn't working
     
     
-    matRotate.c[0] = 1.0 - 2.0 * (c[2] * c[2] + c[3] * c[3]);
-    matRotate.c[1] = 2.0 * (c[1] * c[2] - c[0] * c[3]);
-    matRotate.c[2] = 2.0 * (c[0] * c[2] + c[1] * c[3]);
+    matRotate.c[0] = 1.0f - 2.0f * (c[2] * c[2] + c[3] * c[3]);
+    matRotate.c[1] = 2.0f * (c[1] * c[2] - c[0] * c[3]);
+    matRotate.c[2] = 2.0f * (c[0] * c[2] + c[1] * c[3]);
     
-    matRotate.c[4] = 2.0 * (c[1] * c[2] + c[0] * c[3]);
-    matRotate.c[5] = 1.0 - 2.0 * (c[1] * c[1] + c[3] * c[3]);
-    matRotate.c[6] = 2.0 * (c[2] * c[3] - c[0] * c[1]);
+    matRotate.c[4] = 2.0f * (c[1] * c[2] + c[0] * c[3]);
+    matRotate.c[5] = 1.0f - 2.0f * (c[1] * c[1] + c[3] * c[3]);
+    matRotate.c[6] = 2.0f * (c[2] * c[3] - c[0] * c[1]);
     
-    matRotate.c[8] = 2.0 * (c[1] * c[3] - c[0] * c[2]);
-    matRotate.c[9] = 2.0 * (c[0] * c[1] + c[2] * c[3]);
-    matRotate.c[10] = 1.0 - 2.0 * (c[1] * c[1] + c[2] * c[2]);
+    matRotate.c[8] = 2.0f * (c[1] * c[3] - c[0] * c[2]);
+    matRotate.c[9] = 2.0f * (c[0] * c[1] + c[2] * c[3]);
+    matRotate.c[10] = 1.0f - 2.0f * (c[1] * c[1] + c[2] * c[2]);
     
     return matRotate;
 }
@@ -367,13 +367,13 @@ Quaternion Quaternion::FromRotationMatrix(const Matrix4 &m)
     y = (m[1] + m[4]) / s;
     z = (m[2] + m[8]) / s;
   } else if (m[5] > m[10]) {
-    const float s = 2.0 * sqrt(1.0f + m[5] - m[0] - m[10]);
+    const float s = 2.0f * sqrt(1.0f + m[5] - m[0] - m[10]);
     w = (m[2] - m[8]) / s;
     x = (m[1] + m[4]) / s;
     y = 0.25f * s;
     z = (m[6] + m[9]) / s;
   } else {
-    const float s = 2.0 * sqrt(1.0f + m[10] - m[0] - m[5]);
+    const float s = 2.0f * sqrt(1.0f + m[10] - m[0] - m[5]);
     w = (m[4] - m[1]) / s;
     x = (m[2] + m[8]) / s;
     y = (m[6] + m[9]) / s;

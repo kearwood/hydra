@@ -261,7 +261,7 @@ bool AABB::intersectsRay(const Vector3 &v1, const Vector3 &dir) const
   maxT.init();
   Vector3 coord;
   coord.init();
-	double candidatePlane[3];
+	float candidatePlane[3];
 
   // Find candidate planes; this loop can be avoided if rays cast all from the eye(assume perpsective view)
 	for (int i=0; i<3; i++)

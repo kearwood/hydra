@@ -43,6 +43,8 @@ public:
 
   void init(const Triangle3 &tri);
   void init(const Vector3 &v1, const Vector3 &v2, const Vector3 &v3);
+  static Triangle3 Create(const Triangle3 &tri);
+  static Triangle3 Create(const Vector3 &v1, const Vector3 &v2, const Vector3 &v3);
     
   Vector3 calculateNormal() const;
     
