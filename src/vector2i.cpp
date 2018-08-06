@@ -238,7 +238,7 @@ int Vector2i::sqrMagnitude() const {
 }
 
 int Vector2i::magnitude() const {
-    return static_cast<int>(sqrt(x * x + y * y));
+    return static_cast<int>(sqrtf(x * x + y * y));
 }
 
 Vector2i Vector2i::Normalize(const Vector2i &v) {
