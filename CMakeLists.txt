@@ -37,4 +37,4 @@ set(SRCS
   src/vector2i.cpp
 )
 
-add_library(hydra STATIC ${SRCS} ${PUBLIC_HEADERS})
+add_library(hydra ${SRCS} ${PUBLIC_HEADERS})
