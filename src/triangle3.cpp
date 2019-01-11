@@ -150,7 +150,7 @@ Vector3 Triangle3::operator[](unsigned int i) const
 bool Triangle3::rayCast(const Vector3 &start, const Vector3 &dir, Vector3 &hit_point) const
 {
     // algorithm based on Dan Sunday's implementation at http://geomalgorithms.com/a06-_intersect-2.html
-    const float SMALL_NUM = 0.00000001;     // anything that avoids division overflow
+    const float SMALL_NUM = 0.00000001f;     // anything that avoids division overflow
     Vector3   u, v, n;                    // triangle vectors
     Vector3   w0, w;                      // ray vectors
     float       r, a, b;                    // params to calc ray-plane intersect

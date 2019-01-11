@@ -136,7 +136,7 @@ float &Quaternion::operator [](unsigned i) {
 }
 
 Vector3 Quaternion::eulerXYZ() const {
-    double a2 = 2 * (c[0] * c[2] - c[1] * c[3]);
+    float a2 = 2 * (c[0] * c[2] - c[1] * c[3]);
     if(a2 <= -0.99999) {
         return Vector3::Create(
            2.0f * atan2(c[1], c[0]),
@@ -151,9 +151,9 @@ Vector3 Quaternion::eulerXYZ() const {
         );
     } else {
         return Vector3::Create(
-             atan2(2 * (c[0] * c[1] + c[2] * c[3]), (1 - 2 * (c[1] * c[1] + c[2] * c[2]))),
+             atan2f(2 * (c[0] * c[1] + c[2] * c[3]), (1 - 2 * (c[1] * c[1] + c[2] * c[2]))),
              asinf(a2),
-             atan2(2 * (c[0] * c[3] + c[1] * c[2]), (1 - 2 * (c[2] * c[2] + c[3] * c[3])))
+             atan2f(2 * (c[0] * c[3] + c[1] * c[2]), (1 - 2 * (c[2] * c[2] + c[3] * c[3])))
          );
     }
     

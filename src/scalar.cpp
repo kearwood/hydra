@@ -35,7 +35,7 @@ namespace kraken {
 
 float SmoothStep(float a, float b, float t)
 {
-    float d = (3.0 * t * t - 2.0 * t * t * t);
+    float d = (3.0f * t * t - 2.0f * t * t * t);
     return a * (1.0f - d) + b * d;
 }
 
