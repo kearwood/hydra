@@ -7,13 +7,14 @@ branches:
 
 os:
   - linux
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - libc++-dev
-          - ninja-build
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libc++-dev
+      - ninja-build
 
 env:
   - CMAKE_BUILD_TYPE=DEBUG
