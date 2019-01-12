@@ -5,17 +5,19 @@ branches:
   only:
     - master 
 
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - libc++-dev
-            - ninja-build
-        env: CMAKE_BUILD_TYPE=DEBUG
+os:
+  - linux
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - libc++-dev
+          - ninja-build
+
+env:
+  - CMAKE_BUILD_TYPE=DEBUG
+  - CMAKE_BUILD_TYPE=RELEASE
 
 # Build steps
 script:
