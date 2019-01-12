@@ -1,0 +1,27 @@
+language: cpp
+compiler: clang
+
+branches:
+  only:
+    - master 
+
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libc++-dev
+            - ninja-build
+        env: CMAKE_BUILD_TYPE=DEBUG
+
+# Build steps
+script:
+  - $CXX --version
+  - cmake --version
+  - mkdir "$TRAVIS_BUILD_DIR/build"
+  - cd "$TRAVIS_BUILD_DIR/build"
+  - cmake -GNinja "$SRC_DIR"
+  - ninja -v
