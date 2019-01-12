@@ -38,3 +38,20 @@ set(SRCS
 )
 
 add_library(hydra ${SRCS} ${PUBLIC_HEADERS})
+SET_TARGET_PROPERTIES(
+  hydra
+PROPERTIES
+  VERSION 0.1.0
+  SOVERSION 0.1
+  PUBLIC_HEADER "${PUBLIC_HEADERS}"
+)
+
+install(
+  TARGETS hydra
+    LIBRARY
+      DESTINATION lib
+    ARCHIVE 
+      DESTINATION lib
+    PUBLIC_HEADER
+      DESTINATION include/hydra
+)
