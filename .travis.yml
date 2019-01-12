@@ -19,6 +19,7 @@ matrix:
 
 # Build steps
 script:
+  - export SRC_DIR="`pwd`"
   - $CXX --version
   - cmake --version
   - mkdir "$TRAVIS_BUILD_DIR/build"
