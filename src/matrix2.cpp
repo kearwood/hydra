@@ -107,8 +107,8 @@ void Matrix2::rotate(float angle) {
     
     Matrix2 newMatrix; // Create new identity matrix
     newMatrix.init();
-    newMatrix.c[0] = cos(angle);
-    newMatrix.c[1] = -sin(angle);
+    newMatrix.c[0] = cosf(angle);
+    newMatrix.c[1] = -sinf(angle);
     newMatrix.c[2] = -newMatrix.c[1];
     newMatrix.c[3] = newMatrix.c[0];
     

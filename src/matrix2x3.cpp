@@ -127,8 +127,8 @@ void Matrix2x3::translate(const Vector2 &v)
 void Matrix2x3::rotate(float angle) {
     Matrix2x3 newMatrix;
     newMatrix.init();
-    newMatrix.c[0] = cos(angle);
-    newMatrix.c[1] = -sin(angle);
+    newMatrix.c[0] = cosf(angle);
+    newMatrix.c[1] = -sinf(angle);
     newMatrix.c[2] = -newMatrix.c[1];
     newMatrix.c[3] = newMatrix.c[0];
     

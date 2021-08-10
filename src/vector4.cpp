@@ -175,11 +175,11 @@ Vector4 Vector4::Slerp(const Vector4 &v1, const Vector4 &v2, float d) {
     // Acos(dot) returns the angle between start and end,
     // And multiplying that by percent returns the angle between
     // start and the final result.
-    float theta = acos(dot)*d;
+    float theta = acosf(dot)*d;
     Vector4 RelativeVec = v2 - v1*dot;
     RelativeVec.normalize();     // Orthonormal basis
     // The final result.
-    return ((v1*cos(theta)) + (RelativeVec*sin(theta)));
+    return ((v1*cosf(theta)) + (RelativeVec*sinf(theta)));
 }
 
 void Vector4::OrthoNormalize(Vector4 &normal, Vector4 &tangent) {

@@ -94,7 +94,7 @@ void Quaternion::init(const Vector3 &from_vector, const Vector3 &to_vector) {
     c[0] = a[0];
     c[1] = a[1];
     c[2] = a[2];
-    c[3] = sqrt(from_vector.sqrMagnitude() * to_vector.sqrMagnitude()) + Vector3::Dot(from_vector, to_vector);
+    c[3] = sqrtf(from_vector.sqrMagnitude() * to_vector.sqrMagnitude()) + Vector3::Dot(from_vector, to_vector);
     normalize();
 }
 
@@ -114,12 +114,12 @@ void Quaternion::setEulerXYZ(const Vector3 &euler)
 
 void Quaternion::setEulerZYX(const Vector3 &euler) {
     // ZYX Order!
-    float c1 = cos(euler[0] * 0.5f);
-    float c2 = cos(euler[1] * 0.5f);
-    float c3 = cos(euler[2] * 0.5f);
-    float s1 = sin(euler[0] * 0.5f);
-    float s2 = sin(euler[1] * 0.5f);
-    float s3 = sin(euler[2] * 0.5f);
+    float c1 = cosf(euler[0] * 0.5f);
+    float c2 = cosf(euler[1] * 0.5f);
+    float c3 = cosf(euler[2] * 0.5f);
+    float s1 = sinf(euler[0] * 0.5f);
+    float s2 = sinf(euler[1] * 0.5f);
+    float s3 = sinf(euler[2] * 0.5f);
     
     c[0] = c1 * c2 * c3 + s1 * s2 * s3;
     c[1] = s1 * c2 * c3 - c1 * s2 * s3;
@@ -139,13 +139,13 @@ Vector3 Quaternion::eulerXYZ() const {
     float a2 = 2 * (c[0] * c[2] - c[1] * c[3]);
     if(a2 <= -0.99999) {
         return Vector3::Create(
-           2.0f * atan2(c[1], c[0]),
+           2.0f * atan2f(c[1], c[0]),
            -PI * 0.5f,
            0
         );
     } else if(a2 >= 0.99999) {
         return Vector3::Create(
-           2.0f * atan2(c[1], c[0]),
+           2.0f * atan2f(c[1], c[0]),
            PI * 0.5f,
            0
         );
@@ -345,8 +345,8 @@ Matrix4 Quaternion::rotationMatrix() const {
 Quaternion Quaternion::FromAngleAxis(const Vector3 &axis, float angle)
 {
     float ha = angle * 0.5f;
-    float sha = sin(ha);
-    return Quaternion::Create(cos(ha), axis.x * sha, axis.y * sha, axis.z * sha);
+    float sha = sinf(ha);
+    return Quaternion::Create(cosf(ha), axis.x * sha, axis.y * sha, axis.z * sha);
 }
 
 Quaternion Quaternion::FromRotationMatrix(const Matrix4 &m)
@@ -355,25 +355,25 @@ Quaternion Quaternion::FromRotationMatrix(const Matrix4 &m)
   const float trace = m[0] + m[5] + m[10];
   float w, x, y, z;
   if (trace > 0.0) {
-    const float s = 0.5f / sqrt(trace + 1.0f);
+    const float s = 0.5f / sqrtf(trace + 1.0f);
     w = 0.25f / s;
     x = (m[9] - m[6]) * s;
     y = (m[2] - m[8]) * s;
     z = (m[4] - m[1]) * s;
   } else if (m[0] > m[5] && m[0] > m[10]) {
-    const float s = 2.0f * sqrt(1.0f + m[0] - m[5] - m[10]);
+    const float s = 2.0f * sqrtf(1.0f + m[0] - m[5] - m[10]);
     w = (m[9] - m[6]) / s;
     x = 0.25f * s;
     y = (m[1] + m[4]) / s;
     z = (m[2] + m[8]) / s;
   } else if (m[5] > m[10]) {
-    const float s = 2.0f * sqrt(1.0f + m[5] - m[0] - m[10]);
+    const float s = 2.0f * sqrtf(1.0f + m[5] - m[0] - m[10]);
     w = (m[2] - m[8]) / s;
     x = (m[1] + m[4]) / s;
     y = 0.25f * s;
     z = (m[6] + m[9]) / s;
   } else {
-    const float s = 2.0f * sqrt(1.0f + m[10] - m[0] - m[5]);
+    const float s = 2.0f * sqrtf(1.0f + m[10] - m[0] - m[5]);
     w = (m[4] - m[1]) / s;
     x = (m[2] + m[8]) / s;
     y = (m[6] + m[9]) / s;
@@ -423,9 +423,9 @@ Quaternion Quaternion::Slerp(const Quaternion &a, const Quaternion &b, float t)
         return Lerp(c, b, t);
     }
     
-    float halftheta = acos(coshalftheta);
+    float halftheta = acosf(coshalftheta);
     
-    return (c * sin((1.0f - t) * halftheta) + b * sin(t * halftheta)) / sin(halftheta);
+    return (c * sinf((1.0f - t) * halftheta) + b * sinf(t * halftheta)) / sinf(halftheta);
 }
 
 } // namespace kraken

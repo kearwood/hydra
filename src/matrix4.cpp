@@ -129,7 +129,7 @@ void Matrix4::perspective(float fov, float aspect, float nearz, float farz) {
    
     memset(c, 0, sizeof(float) * 16);
     
-    float range= tan(fov * 0.5f) * nearz;
+    float range= tanf(fov * 0.5f) * nearz;
     c[0] = (2 * nearz) / ((range * aspect) - (-range * aspect));
     c[5] = (2 * nearz) / (2 * range);
     c[10] = -(farz + nearz) / (farz - nearz);
@@ -199,10 +199,11 @@ void Matrix4::rotate(float angle, AXIS axis) {
     Matrix4 newMatrix; // Create new identity matrix
     newMatrix.init();
     
-    newMatrix.c[cos1[axis]] = cos(angle);
-    newMatrix.c[sin1[axis]] = -sin(angle);
-    newMatrix.c[sin2[axis]] = -newMatrix.c[sin1[axis]];
-    newMatrix.c[cos2[axis]] = newMatrix.c[cos1[axis]];
+    uint8_t index = static_cast<uint8_t>(axis);
+    newMatrix.c[cos1[index]] = cosf(angle);
+    newMatrix.c[sin1[index]] = -sinf(angle);
+    newMatrix.c[sin2[index]] = -newMatrix.c[sin1[index]];
+    newMatrix.c[cos2[index]] = newMatrix.c[cos1[index]];
     
     *this *= newMatrix;
 }
@@ -441,9 +442,9 @@ Matrix4 Matrix4::Rotation(const Vector3 &v)
 {
     Matrix4 m;
     m.init();
-    m.rotate(v.x, X_AXIS);
-    m.rotate(v.y, Y_AXIS);
-    m.rotate(v.z, Z_AXIS);
+    m.rotate(v.x, AXIS::X_AXIS);
+    m.rotate(v.y, AXIS::Y_AXIS);
+    m.rotate(v.z, AXIS::Z_AXIS);
     return m;
 }
 

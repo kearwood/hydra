@@ -38,11 +38,11 @@
 
 namespace kraken {
 
-typedef enum {
+enum class AXIS {
   X_AXIS,
   Y_AXIS,
   Z_AXIS
-} AXIS;
+};
 
 class Quaternion;
 

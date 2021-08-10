@@ -55,7 +55,7 @@ namespace {
 
     // Return the distance to the [first] intersecting point
 
-    distance = v - sqrt(d);
+    distance = v - sqrtf(d);
     if (distance < 0.0f) {
       return false;
     }
@@ -175,7 +175,7 @@ bool Triangle3::rayCast(const Vector3 &start, const Vector3 &dir, Vector3 &hit_p
     
     // get intersect point of ray with triangle plane
     r = a / b;
-    if (r < 0.0)                    // ray goes away from triangle
+    if (r < 0.0f)                    // ray goes away from triangle
         return false;                   // => no intersect
     // for a segment, also test if (r > 1.0) => no intersect
     
@@ -195,10 +195,10 @@ bool Triangle3::rayCast(const Vector3 &start, const Vector3 &dir, Vector3 &hit_p
     // get and test parametric coords
     float s, t;
     s = (uv * wv - vv * wu) / D;
-    if (s < 0.0 || s > 1.0)         // plane_hit_point is outside triangle
+    if (s < 0.0f || s > 1.0f)         // plane_hit_point is outside triangle
         return false;
     t = (uv * wu - uu * wv) / D;
-    if (t < 0.0 || (s + t) > 1.0)  // plane_hit_point is outside triangle
+    if (t < 0.0f || (s + t) > 1.0f)  // plane_hit_point is outside triangle
         return false;
 
     // plane_hit_point is inside the triangle
