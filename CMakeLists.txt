@@ -24,7 +24,6 @@ set(PUBLIC_HEADERS
 set(SRCS
   src/aabb.cpp
   src/hitinfo.cpp
-  src/krhelpers.cpp
   src/matrix2.cpp
   src/matrix2x3.cpp
   src/matrix4.cpp
