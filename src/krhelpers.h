@@ -28,8 +28,8 @@
 //  authors and should not be interpreted as representing official policies, either expressed
 //  or implied, of Kearwood Gilbert.
 //
-#ifndef KRHELPERS_H
-#define KRHELPERS_H
+
+#pragma once
 
 #if defined(KRAKEN_USE_OPENGL)
 
@@ -64,5 +64,3 @@ namespace kraken {
   void SetUniform(GLint location, const Matrix4 &v);
 } // namespace kraken
 #endif // defined(KRAKEN_USE_OPENGL)
-
-#endif

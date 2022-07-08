@@ -29,8 +29,7 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_VECTOR4_H
-#define KRAKEN_VECTOR4_H
+#pragma once
 
 #include <functional> // for hash<>
 
@@ -125,5 +124,3 @@ namespace std {
     }
   };
 } // namespace std
-
-#endif // KRAKEN_VECTOR4_H
