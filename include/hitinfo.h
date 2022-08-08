@@ -38,26 +38,27 @@ class KRNode;
 
 namespace kraken {
 
-class HitInfo {
+class HitInfo
+{
 public:
-    HitInfo();
-    HitInfo(const Vector3 &position, const Vector3 &normal, const float distance);
-    HitInfo(const Vector3 &position, const Vector3 &normal, const float distance, KRNode *node);
-    ~HitInfo();
+  HitInfo();
+  HitInfo(const Vector3& position, const Vector3& normal, const float distance);
+  HitInfo(const Vector3& position, const Vector3& normal, const float distance, KRNode* node);
+  ~HitInfo();
 
-    Vector3 getPosition() const;
-    Vector3 getNormal() const;
-    float getDistance() const;
-    KRNode *getNode() const;
-    bool didHit() const;
+  Vector3 getPosition() const;
+  Vector3 getNormal() const;
+  float getDistance() const;
+  KRNode* getNode() const;
+  bool didHit() const;
 
-    HitInfo& operator =(const HitInfo& b);
+  HitInfo& operator =(const HitInfo& b);
 
 private:
-    KRNode *m_node;
-    Vector3 m_position;
-    Vector3 m_normal;
-    float m_distance;
+  KRNode* m_node;
+  Vector3 m_position;
+  Vector3 m_normal;
+  float m_distance;
 };
 
 } // namespace kraken

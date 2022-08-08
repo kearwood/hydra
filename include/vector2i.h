@@ -37,11 +37,14 @@
 
 namespace kraken {
 
-class Vector2i {
+class Vector2i
+{
 
 public:
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       int x, y;
     };
     int c[2];
@@ -50,52 +53,52 @@ public:
   void init();
   void init(int X, int Y);
   void init(int v);
-  void init(int *v);
-  void init(const Vector2i &v);
+  void init(int* v);
+  void init(const Vector2i& v);
   static Vector2i Create();
   static Vector2i Create(int X, int Y);
   static Vector2i Create(int v);
-  static Vector2i Create(int *v);
-  static Vector2i Create(const Vector2i &v);
+  static Vector2i Create(int* v);
+  static Vector2i Create(const Vector2i& v);
 
   // Vector2 swizzle getters
   Vector2i yx() const;
-    
+
   // Vector2 swizzle setters
-  void yx(const Vector2i &v);
-    
+  void yx(const Vector2i& v);
+
   Vector2i operator +(const Vector2i& b) const;
   Vector2i operator -(const Vector2i& b) const;
   Vector2i operator +() const;
   Vector2i operator -() const;
   Vector2i operator *(const int v) const;
   Vector2i operator /(const int v) const;
-    
+
   Vector2i& operator +=(const Vector2i& b);
   Vector2i& operator -=(const Vector2i& b);
   Vector2i& operator *=(const int v);
   Vector2i& operator /=(const int v);
-    
+
   // Comparison operators are implemented to allow insertion into sorted containers such as std::set
   bool operator >(const Vector2i& b) const;
   bool operator <(const Vector2i& b) const;
-    
+
   bool operator ==(const Vector2i& b) const;
   bool operator !=(const Vector2i& b) const;
-    
+
   int& operator[](unsigned i);
   int operator[](unsigned i) const;
-    
+
   int sqrMagnitude() const;
   int magnitude() const;
 
   void normalize();
-  static Vector2i Normalize(const Vector2i &v);
+  static Vector2i Normalize(const Vector2i& v);
 
-  static int Cross(const Vector2i &v1, const Vector2i &v2);
-  static int Dot(const Vector2i &v1, const Vector2i &v2);
-  static Vector2i Min(const Vector2i &v1, const Vector2i &v2);
-  static Vector2i Max(const Vector2i &v1, const Vector2i &v2);
+  static int Cross(const Vector2i& v1, const Vector2i& v2);
+  static int Dot(const Vector2i& v1, const Vector2i& v2);
+  static Vector2i Min(const Vector2i& v1, const Vector2i& v2);
+  static Vector2i Max(const Vector2i& v1, const Vector2i& v2);
 
   static Vector2i Min();
   static Vector2i Max();
@@ -107,14 +110,15 @@ static_assert(std::is_pod<Vector2i>::value, "kraken::Vector2i must be a POD type
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Vector2i> {
-  public:
-    size_t operator()(const kraken::Vector2i &s) const
-    {
-      size_t h1 = hash<int>()(s.x);
-      size_t h2 = hash<int>()(s.y);
-      return h1 ^ (h2 << 1);
-    }
-  };
+template<>
+struct hash<kraken::Vector2i>
+{
+public:
+  size_t operator()(const kraken::Vector2i& s) const
+  {
+    size_t h1 = hash<int>()(s.x);
+    size_t h2 = hash<int>()(s.y);
+    return h1 ^ (h2 << 1);
+  }
+};
 } // namespace std

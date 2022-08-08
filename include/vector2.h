@@ -38,65 +38,68 @@
 
 namespace kraken {
 
-class Vector2 {
-    
+class Vector2
+{
+
 public:
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       float x, y;
     };
     float c[2];
   };
-    
+
   void init();
   void init(float X, float Y);
   void init(float v);
-  void init(float *v);
-  void init(const Vector2 &v);
+  void init(float* v);
+  void init(const Vector2& v);
   static Vector2 Create();
   static Vector2 Create(float X, float Y);
   static Vector2 Create(float v);
-  static Vector2 Create(float *v);
-  static Vector2 Create(const Vector2 &v);
+  static Vector2 Create(float* v);
+  static Vector2 Create(const Vector2& v);
 
   // Vector2 swizzle getters
   Vector2 yx() const;
-    
+
   // Vector2 swizzle setters
-  void yx(const Vector2 &v);
-    
+  void yx(const Vector2& v);
+
   Vector2 operator +(const Vector2& b) const;
   Vector2 operator -(const Vector2& b) const;
   Vector2 operator +() const;
   Vector2 operator -() const;
   Vector2 operator *(const float v) const;
   Vector2 operator /(const float v) const;
-    
+
   Vector2& operator +=(const Vector2& b);
   Vector2& operator -=(const Vector2& b);
   Vector2& operator *=(const float v);
   Vector2& operator /=(const float v);
-    
+
   // Comparison operators are implemented to allow insertion into sorted containers such as std::set
   bool operator >(const Vector2& b) const;
   bool operator <(const Vector2& b) const;
-    
+
   bool operator ==(const Vector2& b) const;
   bool operator !=(const Vector2& b) const;
-    
+
   float& operator[](unsigned i);
   float operator[](unsigned i) const;
-    
+
   float sqrMagnitude() const;
   float magnitude() const;
 
   void normalize();
-  static Vector2 Normalize(const Vector2 &v);
+  static Vector2 Normalize(const Vector2& v);
 
-  static float Cross(const Vector2 &v1, const Vector2 &v2);
-  static float Dot(const Vector2 &v1, const Vector2 &v2);
-  static Vector2 Min(const Vector2 &v1, const Vector2 &v2);
-  static Vector2 Max(const Vector2 &v1, const Vector2 &v2);
+  static float Cross(const Vector2& v1, const Vector2& v2);
+  static float Dot(const Vector2& v1, const Vector2& v2);
+  static Vector2 Min(const Vector2& v1, const Vector2& v2);
+  static Vector2 Max(const Vector2& v1, const Vector2& v2);
   static Vector2 Min();
   static Vector2 Max();
   static Vector2 Zero();
@@ -107,16 +110,17 @@ static_assert(std::is_pod<Vector2>::value, "kraken::Vector2 must be a POD type."
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Vector2> {
-  public:
-    size_t operator()(const kraken::Vector2 &s) const
-    {
-      size_t h1 = hash<float>()(s.x);
-      size_t h2 = hash<float>()(s.y);
-      return h1 ^ (h2 << 1);
-    }
-  };
+template<>
+struct hash<kraken::Vector2>
+{
+public:
+  size_t operator()(const kraken::Vector2& s) const
+  {
+    size_t h1 = hash<float>()(s.x);
+    size_t h2 = hash<float>()(s.y);
+    return h1 ^ (h2 << 1);
+  }
+};
 } // namespace std
 
 #endif // KRAKEN_VECTOR2_H

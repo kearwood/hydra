@@ -36,54 +36,57 @@
 
 namespace kraken {
 
-class Matrix2 {
+class Matrix2
+{
 public:
 
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       Vector2 axis_x, axis_y;
     };
     // Matrix components, in column-major order
     float c[4];
   };
-    
+
   // Default initializer - Creates an identity matrix
   void init();
-    
-  void init(float *pMat);
-    
-  void init(const Vector2 &new_axis_x, const Vector2 &new_axis_y);
 
-  void init(const Matrix2 &m);
-    
+  void init(float* pMat);
+
+  void init(const Vector2& new_axis_x, const Vector2& new_axis_y);
+
+  void init(const Matrix2& m);
+
   // Overload comparison operator
-  bool operator==(const Matrix2 &m) const;
-    
+  bool operator==(const Matrix2& m) const;
+
   // Overload compound multiply operator
-  Matrix2& operator*=(const Matrix2 &m);
-    
+  Matrix2& operator*=(const Matrix2& m);
+
   float& operator[](unsigned i);
   float operator[](unsigned i) const;
-    
+
   // Overload multiply operator
   //Matrix4& operator*(const Matrix4 &m);
-  Matrix2 operator*(const Matrix2 &m) const;
-    
-  float *getPointer();
-    
+  Matrix2 operator*(const Matrix2& m) const;
+
+  float* getPointer();
+
   void scale(float x, float y);
-  void scale(const Vector2 &v);
+  void scale(const Vector2& v);
   void scale(float s);
   void rotate(float angle);
   bool invert();
   void transpose();
-    
-  static Matrix2 Invert(const Matrix2 &m);
-  static Matrix2 Transpose(const Matrix2 &m);
-  static Vector2 Dot(const Matrix2 &m, const Vector2 &v);
+
+  static Matrix2 Invert(const Matrix2& m);
+  static Matrix2 Transpose(const Matrix2& m);
+  static Vector2 Dot(const Matrix2& m, const Vector2& v);
 
   static Matrix2 Rotation(float);
-  static Matrix2 Scaling(const Vector2 &v);
+  static Matrix2 Scaling(const Vector2& v);
   static Matrix2 Identity();
 };
 static_assert(std::is_pod<Matrix2>::value, "kraken::Matrix2 must be a POD type.");
@@ -91,16 +94,17 @@ static_assert(std::is_pod<Matrix2>::value, "kraken::Matrix2 must be a POD type."
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Matrix2> {
-  public:
-    size_t operator()(const kraken::Matrix2 &s) const
-    {
-      size_t h1 = hash<kraken::Vector2>()(s.axis_x);
-      size_t h2 = hash<kraken::Vector2>()(s.axis_y);
-      return h1 ^ (h2 << 1);
-    }
-  };
+template<>
+struct hash<kraken::Matrix2>
+{
+public:
+  size_t operator()(const kraken::Matrix2& s) const
+  {
+    size_t h1 = hash<kraken::Vector2>()(s.axis_x);
+    size_t h2 = hash<kraken::Vector2>()(s.axis_y);
+    return h1 ^ (h2 << 1);
+  }
+};
 } // namespace std
 
 #endif // KRAKEN_MATRIX2_H

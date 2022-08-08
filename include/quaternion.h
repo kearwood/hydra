@@ -36,10 +36,13 @@
 
 namespace kraken {
 
-class Quaternion {
+class Quaternion
+{
 public:
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       float w, x, y, z;
     };
     float c[4];
@@ -48,71 +51,72 @@ public:
   void init();
   void init(float w, float x, float y, float z);
   void init(const Quaternion& p);
-  void init(const Vector3 &euler);
-  void init(const Vector3 &from_vector, const Vector3 &to_vector);
+  void init(const Vector3& euler);
+  void init(const Vector3& from_vector, const Vector3& to_vector);
   static Quaternion Create();
   static Quaternion Create(float w, float x, float y, float z);
   static Quaternion Create(const Quaternion& p);
-  static Quaternion Create(const Vector3 &euler);
-  static Quaternion Create(const Vector3 &from_vector, const Vector3 &to_vector);
-    
-  Quaternion operator +(const Quaternion &v) const;
-  Quaternion operator -(const Quaternion &v) const;
+  static Quaternion Create(const Vector3& euler);
+  static Quaternion Create(const Vector3& from_vector, const Vector3& to_vector);
+
+  Quaternion operator +(const Quaternion& v) const;
+  Quaternion operator -(const Quaternion& v) const;
   Quaternion operator +() const;
   Quaternion operator -() const;
-    
-  Quaternion operator *(const Quaternion &v);
+
+  Quaternion operator *(const Quaternion& v);
   Quaternion operator *(float num) const;
   Quaternion operator /(float num) const;
-    
+
   Quaternion& operator +=(const Quaternion& v);
   Quaternion& operator -=(const Quaternion& v);
   Quaternion& operator *=(const Quaternion& v);
   Quaternion& operator *=(const float& v);
   Quaternion& operator /=(const float& v);
 
-  friend bool operator ==(Quaternion &v1, Quaternion &v2);
-  friend bool operator !=(Quaternion &v1, Quaternion &v2);
+  friend bool operator ==(Quaternion& v1, Quaternion& v2);
+  friend bool operator !=(Quaternion& v1, Quaternion& v2);
   float& operator [](unsigned i);
   float operator [](unsigned i) const;
-    
-  void setEulerXYZ(const Vector3 &euler);
-  void setEulerZYX(const Vector3 &euler);
+
+  void setEulerXYZ(const Vector3& euler);
+  void setEulerZYX(const Vector3& euler);
   Vector3 eulerXYZ() const;
   Matrix4 rotationMatrix() const;
-    
+
   void normalize();
-  static Quaternion Normalize(const Quaternion &v1);
-    
+  static Quaternion Normalize(const Quaternion& v1);
+
   void conjugate();
-  static Quaternion Conjugate(const Quaternion &v1);
+  static Quaternion Conjugate(const Quaternion& v1);
 
   void invert();
-  static Quaternion Invert(const Quaternion &v1);
-    
-  static Quaternion FromAngleAxis(const Vector3 &axis, float angle);
-  static Quaternion FromRotationMatrix(const Matrix4 &m);
-  static Quaternion Lerp(const Quaternion &a, const Quaternion &b, float t);
-  static Quaternion Slerp(const Quaternion &a, const Quaternion &b, float t);
-  static float Dot(const Quaternion &v1, const Quaternion &v2);
+  static Quaternion Invert(const Quaternion& v1);
+
+  static Quaternion FromAngleAxis(const Vector3& axis, float angle);
+  static Quaternion FromRotationMatrix(const Matrix4& m);
+  static Quaternion Lerp(const Quaternion& a, const Quaternion& b, float t);
+  static Quaternion Slerp(const Quaternion& a, const Quaternion& b, float t);
+  static float Dot(const Quaternion& v1, const Quaternion& v2);
 };
 static_assert(std::is_pod<Quaternion>::value, "kraken::Quaternion must be a POD type.");
 
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Quaternion> {
-  public:
-    size_t operator()(const kraken::Quaternion &s) const
-    {
-      size_t h1 = hash<float>()(s.c[0]);
-      size_t h2 = hash<float>()(s.c[1]);
-      size_t h3 = hash<float>()(s.c[2]);
-      size_t h4 = hash<float>()(s.c[3]);
-      return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
-    }
-  };
+template<>
+struct hash<kraken::Quaternion>
+{
+public:
+  size_t operator()(const kraken::Quaternion& s) const
+  {
+    size_t h1 = hash<float>()(s.c[0]);
+    size_t h2 = hash<float>()(s.c[1]);
+    size_t h3 = hash<float>()(s.c[2]);
+    size_t h4 = hash<float>()(s.c[3]);
+    return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
+  }
+};
 } // namespace std
 
 #endif // KRAKEN_QUATERNION_H

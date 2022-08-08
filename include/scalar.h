@@ -34,8 +34,8 @@
 
 namespace kraken {
 
-  float SmoothStep(float a, float b, float t);
-  float Lerp(float a, float b, float t);
+float SmoothStep(float a, float b, float t);
+float Lerp(float a, float b, float t);
 
 }; // namespace kraken
 

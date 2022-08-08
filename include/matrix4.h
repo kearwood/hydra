@@ -38,7 +38,8 @@
 
 namespace kraken {
 
-enum class AXIS {
+enum class AXIS
+{
   X_AXIS,
   Y_AXIS,
   Z_AXIS
@@ -46,68 +47,71 @@ enum class AXIS {
 
 class Quaternion;
 
-class Matrix4 {
+class Matrix4
+{
 public:
 
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       Vector4 axis_x, axis_y, axis_z, transform;
     };
     // Matrix components, in column-major order
     float c[16];
   };
-    
+
   // Default initializer - Creates an identity matrix
   void init();
-    
-  void init(float *pMat);
-  void init(const Vector3 &new_axis_x, const Vector3 &new_axis_y, const Vector3 &new_axis_z, const Vector3 &new_transform);
-  void init(const Matrix4 &m);
 
-  static Matrix4 Create(float *pMat);
-  static Matrix4 Create(const Vector3 &new_axis_x, const Vector3 &new_axis_y, const Vector3 &new_axis_z, const Vector3 &new_transform);
-    
+  void init(float* pMat);
+  void init(const Vector3& new_axis_x, const Vector3& new_axis_y, const Vector3& new_axis_z, const Vector3& new_transform);
+  void init(const Matrix4& m);
+
+  static Matrix4 Create(float* pMat);
+  static Matrix4 Create(const Vector3& new_axis_x, const Vector3& new_axis_y, const Vector3& new_axis_z, const Vector3& new_transform);
+
   // Overload comparison operator
-  bool operator==(const Matrix4 &m) const;
-    
+  bool operator==(const Matrix4& m) const;
+
   // Overload compound multiply operator
-  Matrix4& operator*=(const Matrix4 &m);
-    
+  Matrix4& operator*=(const Matrix4& m);
+
   float& operator[](unsigned i);
   float operator[](unsigned i) const;
-    
+
   // Overload multiply operator
   //Matrix4& operator*(const Matrix4 &m);
-  Matrix4 operator*(const Matrix4 &m) const;
-    
-  float *getPointer();
-    
+  Matrix4 operator*(const Matrix4& m) const;
+
+  float* getPointer();
+
   void perspective(float fov, float aspect, float nearz, float farz);
   void ortho(float left, float right, float top, float bottom, float nearz, float farz);
   void translate(float x, float y, float z);
-  void translate(const Vector3 &v);
+  void translate(const Vector3& v);
   void scale(float x, float y, float z);
-  void scale(const Vector3 &v);
+  void scale(const Vector3& v);
   void scale(float s);
   void rotate(float angle, AXIS axis);
-  void rotate(const Quaternion &q);
+  void rotate(const Quaternion& q);
   void bias();
   bool invert();
   void transpose();
-    
-  static Vector3 DotNoTranslate(const Matrix4 &m, const Vector3 &v); // Dot product without including translation; useful for transforming normals and tangents
-  static Matrix4 Invert(const Matrix4 &m);
-  static Matrix4 Transpose(const Matrix4 &m);
-  static Vector3 Dot(const Matrix4 &m, const Vector3 &v);
-  static Vector4 Dot4(const Matrix4 &m, const Vector4 &v);
-  static float DotW(const Matrix4 &m, const Vector3 &v);
-  static Vector3 DotWDiv(const Matrix4 &m, const Vector3 &v);
-    
-  static Matrix4 LookAt(const Vector3 &cameraPos, const Vector3 &lookAtPos, const Vector3 &upDirection);
-    
-  static Matrix4 Translation(const Vector3 &v);
-  static Matrix4 Rotation(const Vector3 &v);
-  static Matrix4 Scaling(const Vector3 &v);
+
+  static Vector3 DotNoTranslate(const Matrix4& m, const Vector3& v); // Dot product without including translation; useful for transforming normals and tangents
+  static Matrix4 Invert(const Matrix4& m);
+  static Matrix4 Transpose(const Matrix4& m);
+  static Vector3 Dot(const Matrix4& m, const Vector3& v);
+  static Vector4 Dot4(const Matrix4& m, const Vector4& v);
+  static float DotW(const Matrix4& m, const Vector3& v);
+  static Vector3 DotWDiv(const Matrix4& m, const Vector3& v);
+
+  static Matrix4 LookAt(const Vector3& cameraPos, const Vector3& lookAtPos, const Vector3& upDirection);
+
+  static Matrix4 Translation(const Vector3& v);
+  static Matrix4 Rotation(const Vector3& v);
+  static Matrix4 Scaling(const Vector3& v);
   static Matrix4 Identity();
 };
 static_assert(std::is_pod<Matrix4>::value, "kraken::Matrix4 must be a POD type.");
@@ -115,18 +119,19 @@ static_assert(std::is_pod<Matrix4>::value, "kraken::Matrix4 must be a POD type."
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Matrix4> {
-  public:
-    size_t operator()(const kraken::Matrix4 &s) const
-    {
-      size_t h1 = hash<kraken::Vector4>()(s.axis_x);
-      size_t h2 = hash<kraken::Vector4>()(s.axis_y);
-      size_t h3 = hash<kraken::Vector4>()(s.axis_z);
-      size_t h4 = hash<kraken::Vector4>()(s.transform);
-      return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
-    }
-  };
+template<>
+struct hash<kraken::Matrix4>
+{
+public:
+  size_t operator()(const kraken::Matrix4& s) const
+  {
+    size_t h1 = hash<kraken::Vector4>()(s.axis_x);
+    size_t h2 = hash<kraken::Vector4>()(s.axis_y);
+    size_t h3 = hash<kraken::Vector4>()(s.axis_z);
+    size_t h4 = hash<kraken::Vector4>()(s.transform);
+    return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
+  }
+};
 } // namespace std
 
 #endif // KRAKEN_MATRIX4_H

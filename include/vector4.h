@@ -37,11 +37,14 @@ namespace kraken {
 
 class Vector3;
 
-class Vector4 {
-    
+class Vector4
+{
+
 public:
-  union {
-    struct {
+  union
+  {
+    struct
+    {
       float x, y, z, w;
     };
     float c[4];
@@ -50,47 +53,47 @@ public:
   void init();
   void init(float X, float Y, float Z, float W);
   void init(float v);
-  void init(float *v);
-  void init(const Vector4 &v);
-  void init(const Vector3 &v, float W);
+  void init(float* v);
+  void init(const Vector4& v);
+  void init(const Vector3& v, float W);
   static Vector4 Create();
   static Vector4 Create(float X, float Y, float Z, float W);
   static Vector4 Create(float v);
-  static Vector4 Create(float *v);
-  static Vector4 Create(const Vector4 &v);
-  static Vector4 Create(const Vector3 &v, float W);
-    
+  static Vector4 Create(float* v);
+  static Vector4 Create(const Vector4& v);
+  static Vector4 Create(const Vector3& v, float W);
+
   Vector4 operator +(const Vector4& b) const;
   Vector4 operator -(const Vector4& b) const;
   Vector4 operator +() const;
   Vector4 operator -() const;
   Vector4 operator *(const float v) const;
   Vector4 operator /(const float v) const;
-    
+
   Vector4& operator +=(const Vector4& b);
   Vector4& operator -=(const Vector4& b);
   Vector4& operator *=(const float v);
   Vector4& operator /=(const float v);
-    
+
   bool operator ==(const Vector4& b) const;
   bool operator !=(const Vector4& b) const;
-    
+
   // Comparison operators are implemented to allow insertion into sorted containers such as std::set
   bool operator >(const Vector4& b) const;
   bool operator <(const Vector4& b) const;
-    
+
   float& operator[](unsigned i);
   float operator[](unsigned i) const;
-    
+
   float sqrMagnitude() const; // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
   float magnitude() const;
-    
+
   void normalize();
-  static Vector4 Normalize(const Vector4 &v);
-    
-  static float Dot(const Vector4 &v1, const Vector4 &v2);
-  static Vector4 Min(const Vector4 &v1, const Vector4 &v2);
-  static Vector4 Max(const Vector4 &v1, const Vector4 &v2);
+  static Vector4 Normalize(const Vector4& v);
+
+  static float Dot(const Vector4& v1, const Vector4& v2);
+  static Vector4 Min(const Vector4& v1, const Vector4& v2);
+  static Vector4 Max(const Vector4& v1, const Vector4& v2);
 
   static Vector4 Min();
   static Vector4 Max();
@@ -102,25 +105,26 @@ public:
   static Vector4 Down();
   static Vector4 Left();
   static Vector4 Right();
-  static Vector4 Lerp(const Vector4 &v1, const Vector4 &v2, float d);
-  static Vector4 Slerp(const Vector4 &v1, const Vector4 &v2, float d);
-  static void OrthoNormalize(Vector4 &normal, Vector4 &tangent); // Gram-Schmidt Orthonormalization
+  static Vector4 Lerp(const Vector4& v1, const Vector4& v2, float d);
+  static Vector4 Slerp(const Vector4& v1, const Vector4& v2, float d);
+  static void OrthoNormalize(Vector4& normal, Vector4& tangent); // Gram-Schmidt Orthonormalization
 };
 static_assert(std::is_pod<Vector4>::value, "kraken::Vector4 must be a POD type.");
 
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Vector4> {
-  public:
-    size_t operator()(const kraken::Vector4 &s) const
-    {
-      size_t h1 = hash<float>()(s.x);
-      size_t h2 = hash<float>()(s.y);
-      size_t h3 = hash<float>()(s.z);
-      size_t h4 = hash<float>()(s.w);
-      return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
-    }
-  };
+template<>
+struct hash<kraken::Vector4>
+{
+public:
+  size_t operator()(const kraken::Vector4& s) const
+  {
+    size_t h1 = hash<float>()(s.x);
+    size_t h2 = hash<float>()(s.y);
+    size_t h3 = hash<float>()(s.z);
+    size_t h4 = hash<float>()(s.w);
+    return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
+  }
+};
 } // namespace std

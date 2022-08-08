@@ -38,32 +38,35 @@
 
 namespace kraken {
 
-class Vector3 {
+class Vector3
+{
 
 public:
-  union {        
-    struct {
+  union
+  {
+    struct
+    {
       float x, y, z;
     };
     float c[3];
   };
-    
+
   void init();
   void init(float X, float Y, float Z);
   void init(float v);
-  void init(float *v);
-  void init(double *v);
-  void init(const Vector3 &v);
-  void init(const Vector4 &v);
+  void init(float* v);
+  void init(double* v);
+  void init(const Vector3& v);
+  void init(const Vector4& v);
   static Vector3 Create();
   static Vector3 Create(float X, float Y, float Z);
   static Vector3 Create(float v);
-  static Vector3 Create(float *v);
-  static Vector3 Create(double *v);
-  static Vector3 Create(const Vector3 &v);
-  static Vector3 Create(const Vector4 &v);
+  static Vector3 Create(float* v);
+  static Vector3 Create(double* v);
+  static Vector3 Create(const Vector3& v);
+  static Vector3 Create(const Vector4& v);
 
-    
+
   // Vector2 swizzle getters
   Vector2 xx() const;
   Vector2 xy() const;
@@ -74,15 +77,15 @@ public:
   Vector2 zx() const;
   Vector2 zy() const;
   Vector2 zz() const;
-    
+
   // Vector2 swizzle setters
-  void xy(const Vector2 &v);
-  void xz(const Vector2 &v);
-  void yx(const Vector2 &v);
-  void yz(const Vector2 &v);
-  void zx(const Vector2 &v);
-  void zy(const Vector2 &v);
-    
+  void xy(const Vector2& v);
+  void xz(const Vector2& v);
+  void yx(const Vector2& v);
+  void yz(const Vector2& v);
+  void zx(const Vector2& v);
+  void zy(const Vector2& v);
+
   Vector3& operator =(const Vector4& b);
   Vector3 operator +(const Vector3& b) const;
   Vector3 operator -(const Vector3& b) const;
@@ -90,33 +93,33 @@ public:
   Vector3 operator -() const;
   Vector3 operator *(const float v) const;
   Vector3 operator /(const float v) const;
-    
+
   Vector3& operator +=(const Vector3& b);
   Vector3& operator -=(const Vector3& b);
   Vector3& operator *=(const float v);
   Vector3& operator /=(const float v);
-    
+
   bool operator ==(const Vector3& b) const;
   bool operator !=(const Vector3& b) const;
-    
+
   // Comparison operators are implemented to allow insertion into sorted containers such as std::set
   bool operator >(const Vector3& b) const;
   bool operator <(const Vector3& b) const;
-    
+
   float& operator[](unsigned i);
   float operator[](unsigned i) const;
-    
+
   float sqrMagnitude() const; // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
   float magnitude() const;
-    
-  void scale(const Vector3 &v);
+
+  void scale(const Vector3& v);
   void normalize();
-  static Vector3 Normalize(const Vector3 &v);
-    
-  static Vector3 Cross(const Vector3 &v1, const Vector3 &v2);
-  static float Dot(const Vector3 &v1, const Vector3 &v2);
-  static Vector3 Min(const Vector3 &v1, const Vector3 &v2);
-  static Vector3 Max(const Vector3 &v1, const Vector3 &v2);
+  static Vector3 Normalize(const Vector3& v);
+
+  static Vector3 Cross(const Vector3& v1, const Vector3& v2);
+  static float Dot(const Vector3& v1, const Vector3& v2);
+  static Vector3 Min(const Vector3& v1, const Vector3& v2);
+  static Vector3 Max(const Vector3& v1, const Vector3& v2);
 
   static Vector3 Min();
   static Vector3 Max();
@@ -128,25 +131,26 @@ public:
   static Vector3 Down();
   static Vector3 Left();
   static Vector3 Right();
-  static Vector3 Scale(const Vector3 &v1, const Vector3 &v2);
-  static Vector3 Lerp(const Vector3 &v1, const Vector3 &v2, float d);
-  static Vector3 Slerp(const Vector3 &v1, const Vector3 &v2, float d);
-  static void OrthoNormalize(Vector3 &normal, Vector3 &tangent); // Gram-Schmidt Orthonormalization
+  static Vector3 Scale(const Vector3& v1, const Vector3& v2);
+  static Vector3 Lerp(const Vector3& v1, const Vector3& v2, float d);
+  static Vector3 Slerp(const Vector3& v1, const Vector3& v2, float d);
+  static void OrthoNormalize(Vector3& normal, Vector3& tangent); // Gram-Schmidt Orthonormalization
 };
 static_assert(std::is_pod<Vector3>::value, "kraken::Vector3 must be a POD type.");
 
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Vector3> {
-  public:
-    size_t operator()(const kraken::Vector3 &s) const
-    {
-      size_t h1 = hash<float>()(s.x);
-      size_t h2 = hash<float>()(s.y);
-      size_t h3 = hash<float>()(s.z);
-      return h1 ^ (h2 << 1) ^ (h3 << 2);
-    }
-  };
+template<>
+struct hash<kraken::Vector3>
+{
+public:
+  size_t operator()(const kraken::Vector3& s) const
+  {
+    size_t h1 = hash<float>()(s.x);
+    size_t h2 = hash<float>()(s.y);
+    size_t h3 = hash<float>()(s.z);
+    return h1 ^ (h2 << 1) ^ (h3 << 2);
+  }
+};
 } // namespace std

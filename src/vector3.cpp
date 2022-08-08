@@ -37,428 +37,469 @@ namespace kraken {
 //default constructor
 void Vector3::init()
 {
-    x = 0.0f;
-    y = 0.0f;
-    z = 0.0f;
+  x = 0.0f;
+  y = 0.0f;
+  z = 0.0f;
 }
 
 Vector3 Vector3::Create()
 {
-    Vector3 r;
-    r.init();
-    return r;
+  Vector3 r;
+  r.init();
+  return r;
 }
 
-void Vector3::init(const Vector3 &v) {
-    x = v.x;
-    y = v.y;
-    z = v.z;
-}
-
-Vector3 Vector3::Create(const Vector3 &v)
+void Vector3::init(const Vector3& v)
 {
-    Vector3 r;
-    r.init(v);
-    return r;
+  x = v.x;
+  y = v.y;
+  z = v.z;
 }
 
-void Vector3::init(const Vector4 &v) {
-    x = v.x;
-    y = v.y;
-    z = v.z;
-}
-
-Vector3 Vector3::Create(const Vector4 &v)
+Vector3 Vector3::Create(const Vector3& v)
 {
-    Vector3 r;
-    r.init(v);
-    return r;
+  Vector3 r;
+  r.init(v);
+  return r;
 }
 
-void Vector3::init(float *v) {
-    x = v[0];
-    y = v[1];
-    z = v[2];
-}
-
-Vector3 Vector3::Create(float *v)
+void Vector3::init(const Vector4& v)
 {
-    Vector3 r;
-    r.init(v);
-    return r;
+  x = v.x;
+  y = v.y;
+  z = v.z;
 }
 
-
-void Vector3::init(double *v) {
-    x = (float)v[0];
-    y = (float)v[1];
-    z = (float)v[2];
-}
-
-Vector3 Vector3::Create(double *v)
+Vector3 Vector3::Create(const Vector4& v)
 {
-    Vector3 r;
-    r.init(v);
-    return r;
+  Vector3 r;
+  r.init(v);
+  return r;
+}
+
+void Vector3::init(float* v)
+{
+  x = v[0];
+  y = v[1];
+  z = v[2];
+}
+
+Vector3 Vector3::Create(float* v)
+{
+  Vector3 r;
+  r.init(v);
+  return r;
 }
 
 
-void Vector3::init(float v) {
-    x = v;
-    y = v;
-    z = v;
+void Vector3::init(double* v)
+{
+  x = (float)v[0];
+  y = (float)v[1];
+  z = (float)v[2];
+}
+
+Vector3 Vector3::Create(double* v)
+{
+  Vector3 r;
+  r.init(v);
+  return r;
+}
+
+
+void Vector3::init(float v)
+{
+  x = v;
+  y = v;
+  z = v;
 }
 
 Vector3 Vector3::Create(float v)
 {
-    Vector3 r;
-    r.init(v);
-    return r;
+  Vector3 r;
+  r.init(v);
+  return r;
 }
 
 void Vector3::init(float X, float Y, float Z)
 {
-    x = X;
-    y = Y;
-    z = Z;
+  x = X;
+  y = Y;
+  z = Z;
 }
 
 Vector3 Vector3::Create(float X, float Y, float Z)
 {
-    Vector3 r;
-    r.init(X,Y,Z);
-    return r;
+  Vector3 r;
+  r.init(X, Y, Z);
+  return r;
 }
 
 Vector2 Vector3::xx() const
 {
-    return Vector2::Create(x,x);
+  return Vector2::Create(x, x);
 }
 
 Vector2 Vector3::xy() const
 {
-    return Vector2::Create(x,y);
+  return Vector2::Create(x, y);
 }
 
 Vector2 Vector3::xz() const
 {
-    return Vector2::Create(x,z);
+  return Vector2::Create(x, z);
 }
 
 Vector2 Vector3::yx() const
 {
-    return Vector2::Create(y,x);
+  return Vector2::Create(y, x);
 }
 
 Vector2 Vector3::yy() const
 {
-    return Vector2::Create(y,y);
+  return Vector2::Create(y, y);
 }
 
 Vector2 Vector3::yz() const
 {
-    return Vector2::Create(y,z);
+  return Vector2::Create(y, z);
 }
 
 Vector2 Vector3::zx() const
 {
-    return Vector2::Create(z,x);
+  return Vector2::Create(z, x);
 }
 
 Vector2 Vector3::zy() const
 {
-    return Vector2::Create(z,y);
+  return Vector2::Create(z, y);
 }
 
 Vector2 Vector3::zz() const
 {
-    return Vector2::Create(z,z);
+  return Vector2::Create(z, z);
 }
 
-void Vector3::xy(const Vector2 &v)
+void Vector3::xy(const Vector2& v)
 {
-    x = v.x;
-    y = v.y;
+  x = v.x;
+  y = v.y;
 }
 
-void Vector3::xz(const Vector2 &v)
+void Vector3::xz(const Vector2& v)
 {
-    x = v.x;
-    z = v.y;
+  x = v.x;
+  z = v.y;
 }
 
-void Vector3::yx(const Vector2 &v)
+void Vector3::yx(const Vector2& v)
 {
-    y = v.x;
-    x = v.y;
+  y = v.x;
+  x = v.y;
 }
 
-void Vector3::yz(const Vector2 &v)
+void Vector3::yz(const Vector2& v)
 {
-    y = v.x;
-    z = v.y;
+  y = v.x;
+  z = v.y;
 }
 
-void Vector3::zx(const Vector2 &v)
+void Vector3::zx(const Vector2& v)
 {
-    z = v.x;
-    x = v.y;
+  z = v.x;
+  x = v.y;
 }
 
-void Vector3::zy(const Vector2 &v)
+void Vector3::zy(const Vector2& v)
 {
-    z = v.x;
-    y = v.y;
+  z = v.x;
+  y = v.y;
 }
 
-Vector3 Vector3::Min() {
-    return Vector3::Create(-std::numeric_limits<float>::max());
-}
-
-Vector3 Vector3::Max() {
-    return Vector3::Create(std::numeric_limits<float>::max());
-}
-
-Vector3 Vector3::Zero() {
-    return Vector3::Create();
-}
-
-Vector3 Vector3::One() {
-    return Vector3::Create(1.0f, 1.0f, 1.0f);
-}
-
-Vector3 Vector3::Forward() {
-    return Vector3::Create(0.0f, 0.0f, 1.0f);
-}
-
-Vector3 Vector3::Backward() {
-    return Vector3::Create(0.0f, 0.0f, -1.0f);
-}
-
-Vector3 Vector3::Up() {
-    return Vector3::Create(0.0f, 1.0f, 0.0f);
-}
-
-Vector3 Vector3::Down() {
-    return Vector3::Create(0.0f, -1.0f, 0.0f);
-}
-
-Vector3 Vector3::Left() {
-    return Vector3::Create(-1.0f, 0.0f, 0.0f);
-}
-
-Vector3 Vector3::Right() {
-    return Vector3::Create(1.0f, 0.0f, 0.0f);
-}
-
-
-void Vector3::scale(const Vector3 &v)
+Vector3 Vector3::Min()
 {
-    x *= v.x;
-    y *= v.y;
-    z *= v.z;
+  return Vector3::Create(-std::numeric_limits<float>::max());
 }
 
-Vector3 Vector3::Scale(const Vector3 &v1, const Vector3 &v2)
+Vector3 Vector3::Max()
 {
-    return Vector3::Create(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
+  return Vector3::Create(std::numeric_limits<float>::max());
 }
 
-Vector3 Vector3::Lerp(const Vector3 &v1, const Vector3 &v2, float d) {
-    return v1 + (v2 - v1) * d;
+Vector3 Vector3::Zero()
+{
+  return Vector3::Create();
 }
 
-Vector3 Vector3::Slerp(const Vector3 &v1, const Vector3 &v2, float d) {
-    // From: http://keithmaggio.wordpress.com/2011/02/15/math-magician-lerp-slerp-and-nlerp/
-    // Dot product - the cosine of the angle between 2 vectors.
-    float dot = Vector3::Dot(v1, v2);     
-    // Clamp it to be in the range of Acos()
-    if(dot < -1.0f) dot = -1.0f;
-    if(dot > 1.0f) dot = 1.0f;
-    // Acos(dot) returns the angle between start and end,
-    // And multiplying that by percent returns the angle between
-    // start and the final result.
-    float theta = acosf(dot)*d;
-    Vector3 RelativeVec = v2 - v1*dot;
-    RelativeVec.normalize();     // Orthonormal basis
-    // The final result.
-    return ((v1*cosf(theta)) + (RelativeVec*sinf(theta)));
+Vector3 Vector3::One()
+{
+  return Vector3::Create(1.0f, 1.0f, 1.0f);
 }
 
-void Vector3::OrthoNormalize(Vector3 &normal, Vector3 &tangent) {
-    // Gram-Schmidt Orthonormalization
-    normal.normalize();
-    Vector3 proj = normal * Dot(tangent, normal);
-    tangent = tangent - proj;
-    tangent.normalize();
+Vector3 Vector3::Forward()
+{
+  return Vector3::Create(0.0f, 0.0f, 1.0f);
 }
 
-Vector3& Vector3::operator =(const Vector4 &b) {
-    x = b.x;
-    y = b.y;
-    z = b.z;
-    return *this;
+Vector3 Vector3::Backward()
+{
+  return Vector3::Create(0.0f, 0.0f, -1.0f);
 }
 
-Vector3 Vector3::operator +(const Vector3& b) const {
-    return Vector3::Create(x + b.x, y + b.y, z + b.z);
-}
-Vector3 Vector3::operator -(const Vector3& b) const {
-    return Vector3::Create(x - b.x, y - b.y, z - b.z);
-}
-Vector3 Vector3::operator +() const {
-    return *this;
-}
-Vector3 Vector3::operator -() const {
-    return Vector3::Create(-x, -y, -z);
+Vector3 Vector3::Up()
+{
+  return Vector3::Create(0.0f, 1.0f, 0.0f);
 }
 
-Vector3 Vector3::operator *(const float v) const {
-    return Vector3::Create(x * v, y * v, z * v);
+Vector3 Vector3::Down()
+{
+  return Vector3::Create(0.0f, -1.0f, 0.0f);
 }
 
-Vector3 Vector3::operator /(const float v) const {
-    float inv_v = 1.0f / v;
-    return Vector3::Create(x * inv_v, y * inv_v, z * inv_v);
+Vector3 Vector3::Left()
+{
+  return Vector3::Create(-1.0f, 0.0f, 0.0f);
 }
 
-Vector3& Vector3::operator +=(const Vector3& b) {
-    x += b.x;
-    y += b.y;
-    z += b.z;
-    
-    return *this;
+Vector3 Vector3::Right()
+{
+  return Vector3::Create(1.0f, 0.0f, 0.0f);
 }
 
-Vector3& Vector3::operator -=(const Vector3& b) {
-    x -= b.x;
-    y -= b.y;
-    z -= b.z;
-    
-    return *this;
+
+void Vector3::scale(const Vector3& v)
+{
+  x *= v.x;
+  y *= v.y;
+  z *= v.z;
 }
 
-Vector3& Vector3::operator *=(const float v) {
-    x *= v;
-    y *= v;
-    z *= v;
-    
-    return *this;
+Vector3 Vector3::Scale(const Vector3& v1, const Vector3& v2)
+{
+  return Vector3::Create(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
 }
 
-Vector3& Vector3::operator /=(const float v) {
-    float inv_v = 1.0f / v;
-    x *= inv_v;
-    y *= inv_v;
-    z *= inv_v;
-    
-    return *this;
+Vector3 Vector3::Lerp(const Vector3& v1, const Vector3& v2, float d)
+{
+  return v1 + (v2 - v1) * d;
 }
 
-bool Vector3::operator ==(const Vector3& b) const {
-    return x == b.x && y == b.y && z == b.z;
-    
-}
-bool Vector3::operator !=(const Vector3& b) const {
-    return x != b.x || y != b.y || z != b.z;
-}
-
-float& Vector3::operator[](unsigned i) {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-            return y;
-        default:
-        case 2:
-            return z;
-    }
+Vector3 Vector3::Slerp(const Vector3& v1, const Vector3& v2, float d)
+{
+  // From: http://keithmaggio.wordpress.com/2011/02/15/math-magician-lerp-slerp-and-nlerp/
+  // Dot product - the cosine of the angle between 2 vectors.
+  float dot = Vector3::Dot(v1, v2);
+  // Clamp it to be in the range of Acos()
+  if (dot < -1.0f) dot = -1.0f;
+  if (dot > 1.0f) dot = 1.0f;
+  // Acos(dot) returns the angle between start and end,
+  // And multiplying that by percent returns the angle between
+  // start and the final result.
+  float theta = acosf(dot) * d;
+  Vector3 RelativeVec = v2 - v1 * dot;
+  RelativeVec.normalize();     // Orthonormal basis
+  // The final result.
+  return ((v1 * cosf(theta)) + (RelativeVec * sinf(theta)));
 }
 
-float Vector3::operator[](unsigned i) const {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-            return y;
-        case 2:
-        default:
-            return z;
-    }
+void Vector3::OrthoNormalize(Vector3& normal, Vector3& tangent)
+{
+  // Gram-Schmidt Orthonormalization
+  normal.normalize();
+  Vector3 proj = normal * Dot(tangent, normal);
+  tangent = tangent - proj;
+  tangent.normalize();
 }
 
-float Vector3::sqrMagnitude() const {
-    // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
-    return x * x + y * y + z * z;
+Vector3& Vector3::operator =(const Vector4& b)
+{
+  x = b.x;
+  y = b.y;
+  z = b.z;
+  return *this;
 }
 
-float Vector3::magnitude() const {
-    return sqrtf(x * x + y * y + z * z);
+Vector3 Vector3::operator +(const Vector3& b) const
+{
+  return Vector3::Create(x + b.x, y + b.y, z + b.z);
+}
+Vector3 Vector3::operator -(const Vector3& b) const
+{
+  return Vector3::Create(x - b.x, y - b.y, z - b.z);
+}
+Vector3 Vector3::operator +() const
+{
+  return *this;
+}
+Vector3 Vector3::operator -() const
+{
+  return Vector3::Create(-x, -y, -z);
 }
 
-void Vector3::normalize() {
-    float inv_magnitude = 1.0f / sqrtf(x * x + y * y + z * z);
-    x *= inv_magnitude;
-    y *= inv_magnitude;
-    z *= inv_magnitude;
-}
-Vector3 Vector3::Normalize(const Vector3 &v) {
-    float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
-    return Vector3::Create(v.x * inv_magnitude, v.y * inv_magnitude, v.z * inv_magnitude);
+Vector3 Vector3::operator *(const float v) const
+{
+  return Vector3::Create(x * v, y * v, z * v);
 }
 
-Vector3 Vector3::Cross(const Vector3 &v1, const Vector3 &v2) {
-    return Vector3::Create(v1.y * v2.z - v1.z * v2.y,
-                           v1.z * v2.x - v1.x * v2.z,
-                           v1.x * v2.y - v1.y * v2.x);
+Vector3 Vector3::operator /(const float v) const
+{
+  float inv_v = 1.0f / v;
+  return Vector3::Create(x * inv_v, y * inv_v, z * inv_v);
 }
 
-float Vector3::Dot(const Vector3 &v1, const Vector3 &v2) {
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+Vector3& Vector3::operator +=(const Vector3& b)
+{
+  x += b.x;
+  y += b.y;
+  z += b.z;
+
+  return *this;
 }
 
-Vector3 Vector3::Min(const Vector3 &v1, const Vector3 &v2) {
+Vector3& Vector3::operator -=(const Vector3& b)
+{
+  x -= b.x;
+  y -= b.y;
+  z -= b.z;
+
+  return *this;
+}
+
+Vector3& Vector3::operator *=(const float v)
+{
+  x *= v;
+  y *= v;
+  z *= v;
+
+  return *this;
+}
+
+Vector3& Vector3::operator /=(const float v)
+{
+  float inv_v = 1.0f / v;
+  x *= inv_v;
+  y *= inv_v;
+  z *= inv_v;
+
+  return *this;
+}
+
+bool Vector3::operator ==(const Vector3& b) const
+{
+  return x == b.x && y == b.y && z == b.z;
+
+}
+bool Vector3::operator !=(const Vector3& b) const
+{
+  return x != b.x || y != b.y || z != b.z;
+}
+
+float& Vector3::operator[](unsigned i)
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+    return y;
+  default:
+  case 2:
+    return z;
+  }
+}
+
+float Vector3::operator[](unsigned i) const
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+    return y;
+  case 2:
+  default:
+    return z;
+  }
+}
+
+float Vector3::sqrMagnitude() const
+{
+  // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
+  return x * x + y * y + z * z;
+}
+
+float Vector3::magnitude() const
+{
+  return sqrtf(x * x + y * y + z * z);
+}
+
+void Vector3::normalize()
+{
+  float inv_magnitude = 1.0f / sqrtf(x * x + y * y + z * z);
+  x *= inv_magnitude;
+  y *= inv_magnitude;
+  z *= inv_magnitude;
+}
+Vector3 Vector3::Normalize(const Vector3& v)
+{
+  float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
+  return Vector3::Create(v.x * inv_magnitude, v.y * inv_magnitude, v.z * inv_magnitude);
+}
+
+Vector3 Vector3::Cross(const Vector3& v1, const Vector3& v2)
+{
+  return Vector3::Create(v1.y * v2.z - v1.z * v2.y,
+                         v1.z * v2.x - v1.x * v2.z,
+                         v1.x * v2.y - v1.y * v2.x);
+}
+
+float Vector3::Dot(const Vector3& v1, const Vector3& v2)
+{
+  return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+}
+
+Vector3 Vector3::Min(const Vector3& v1, const Vector3& v2)
+{
   return Vector3::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y), KRMIN(v1.z, v2.z));
 }
 
-Vector3 Vector3::Max(const Vector3 &v1, const Vector3 &v2) {
+Vector3 Vector3::Max(const Vector3& v1, const Vector3& v2)
+{
   return Vector3::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y), KRMAX(v1.z, v2.z));
 }
 
 bool Vector3::operator >(const Vector3& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x > b.x) {
-        return true;
-    } else if(x < b.x) {
-        return false;
-    } else if(y > b.y) {
-        return true;
-    } else if(y < b.y) {
-        return false;
-    } else if(z > b.z) {
-        return true;
-    } else {
-        return false;
-    }
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x > b.x) {
+    return true;
+  } else if (x < b.x) {
+    return false;
+  } else if (y > b.y) {
+    return true;
+  } else if (y < b.y) {
+    return false;
+  } else if (z > b.z) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 bool Vector3::operator <(const Vector3& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x < b.x) {
-        return true;
-    } else if(x > b.x) {
-        return false;
-    } else if(y < b.y) {
-        return true;
-    } else if(y > b.y) {
-        return false;
-    } else if(z < b.z) {
-        return true;
-    } else {
-        return false;
-    }
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x < b.x) {
+    return true;
+  } else if (x > b.x) {
+    return false;
+  } else if (y < b.y) {
+    return true;
+  } else if (y > b.y) {
+    return false;
+  } else if (z < b.z) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 } // namespace kraken

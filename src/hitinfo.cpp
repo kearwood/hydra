@@ -35,26 +35,26 @@ namespace kraken {
 
 HitInfo::HitInfo()
 {
-    m_position = Vector3::Zero();
-    m_normal = Vector3::Zero();
-    m_distance = 0.0f;
-    m_node = NULL;
+  m_position = Vector3::Zero();
+  m_normal = Vector3::Zero();
+  m_distance = 0.0f;
+  m_node = NULL;
 }
 
-HitInfo::HitInfo(const Vector3 &position, const Vector3 &normal, const float distance, KRNode *node)
+HitInfo::HitInfo(const Vector3& position, const Vector3& normal, const float distance, KRNode* node)
 {
-    m_position = position;
-    m_normal = normal;
-    m_distance = distance;
-    m_node = node;
+  m_position = position;
+  m_normal = normal;
+  m_distance = distance;
+  m_node = node;
 }
 
-HitInfo::HitInfo(const Vector3 &position, const Vector3 &normal, const float distance)
+HitInfo::HitInfo(const Vector3& position, const Vector3& normal, const float distance)
 {
-    m_position = position;
-    m_normal = normal;
-    m_distance = distance;
-    m_node = NULL;
+  m_position = position;
+  m_normal = normal;
+  m_distance = distance;
+  m_node = NULL;
 }
 
 HitInfo::~HitInfo()
@@ -64,36 +64,36 @@ HitInfo::~HitInfo()
 
 bool HitInfo::didHit() const
 {
-    return m_normal != Vector3::Zero();
+  return m_normal != Vector3::Zero();
 }
 
 Vector3 HitInfo::getPosition() const
 {
-    return m_position;
+  return m_position;
 }
 
 Vector3 HitInfo::getNormal() const
 {
-    return m_normal;
+  return m_normal;
 }
 
 float HitInfo::getDistance() const
 {
-    return m_distance;
+  return m_distance;
 }
 
-KRNode *HitInfo::getNode() const
+KRNode* HitInfo::getNode() const
 {
-    return m_node;
+  return m_node;
 }
 
 HitInfo& HitInfo::operator =(const HitInfo& b)
 {
-    m_position = b.m_position;
-    m_normal = b.m_normal;
-    m_distance = b.m_distance;
-    m_node = b.m_node;
-    return *this;
+  m_position = b.m_position;
+  m_normal = b.m_normal;
+  m_distance = b.m_distance;
+  m_node = b.m_node;
+  return *this;
 }
 
 } // namespace kraken

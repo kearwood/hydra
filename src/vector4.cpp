@@ -37,308 +37,346 @@ namespace kraken {
 //default constructor
 void Vector4::init()
 {
-    x = 0.0f;
-    y = 0.0f;
-    z = 0.0f;
-    w = 0.0f;
+  x = 0.0f;
+  y = 0.0f;
+  z = 0.0f;
+  w = 0.0f;
 }
 
 Vector4 Vector4::Create()
 {
-    Vector4 r;
-    r.init();
-    return r;
+  Vector4 r;
+  r.init();
+  return r;
 }
 
-void Vector4::init(const Vector4 &v) {
-    x = v.x;
-    y = v.y;
-    z = v.z;
-    w = v.w;
-}
-
-Vector4 Vector4::Create(const Vector4 &v)
+void Vector4::init(const Vector4& v)
 {
-    Vector4 r;
-    r.init(v);
-    return r;
+  x = v.x;
+  y = v.y;
+  z = v.z;
+  w = v.w;
 }
 
-void Vector4::init(const Vector3 &v, float W) {
-    x = v.x;
-    y = v.y;
-    z = v.z;
-    w = W;
-}
-
-Vector4 Vector4::Create(const Vector3 &v, float W)
+Vector4 Vector4::Create(const Vector4& v)
 {
-    Vector4 r;
-    r.init(v, W);
-    return r;
+  Vector4 r;
+  r.init(v);
+  return r;
 }
 
-void Vector4::init(float *v) {
-    x = v[0];
-    y = v[1];
-    z = v[2];
-    w = v[3];
-}
-
-Vector4 Vector4::Create(float *v)
+void Vector4::init(const Vector3& v, float W)
 {
-    Vector4 r;
-    r.init(v);
-    return r;
+  x = v.x;
+  y = v.y;
+  z = v.z;
+  w = W;
 }
 
-void Vector4::init(float v) {
-    x = v;
-    y = v;
-    z = v;
-    w = v;
+Vector4 Vector4::Create(const Vector3& v, float W)
+{
+  Vector4 r;
+  r.init(v, W);
+  return r;
+}
+
+void Vector4::init(float* v)
+{
+  x = v[0];
+  y = v[1];
+  z = v[2];
+  w = v[3];
+}
+
+Vector4 Vector4::Create(float* v)
+{
+  Vector4 r;
+  r.init(v);
+  return r;
+}
+
+void Vector4::init(float v)
+{
+  x = v;
+  y = v;
+  z = v;
+  w = v;
 }
 
 Vector4 Vector4::Create(float v)
 {
-    Vector4 r;
-    r.init(v);
-    return r;
+  Vector4 r;
+  r.init(v);
+  return r;
 }
 
 void Vector4::init(float X, float Y, float Z, float W)
 {
-    x = X;
-    y = Y;
-    z = Z;
-    w = W;
+  x = X;
+  y = Y;
+  z = Z;
+  w = W;
 }
 
 Vector4 Vector4::Create(float X, float Y, float Z, float W)
 {
-    Vector4 r;
-    r.init(X, Y, Z, W);
-    return r;
+  Vector4 r;
+  r.init(X, Y, Z, W);
+  return r;
 }
 
-Vector4 Vector4::Min() {
-    return Vector4::Create(-std::numeric_limits<float>::max());
+Vector4 Vector4::Min()
+{
+  return Vector4::Create(-std::numeric_limits<float>::max());
 }
 
-Vector4 Vector4::Max() {
-    return Vector4::Create(std::numeric_limits<float>::max());
+Vector4 Vector4::Max()
+{
+  return Vector4::Create(std::numeric_limits<float>::max());
 }
 
-Vector4 Vector4::Zero() {
-    return Vector4::Create();
+Vector4 Vector4::Zero()
+{
+  return Vector4::Create();
 }
 
-Vector4 Vector4::One() {
-    return Vector4::Create(1.0f, 1.0f, 1.0f, 1.0f);
+Vector4 Vector4::One()
+{
+  return Vector4::Create(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-Vector4 Vector4::Forward() {
-    return Vector4::Create(0.0f, 0.0f, 1.0f, 1.0f);
+Vector4 Vector4::Forward()
+{
+  return Vector4::Create(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
-Vector4 Vector4::Backward() {
-    return Vector4::Create(0.0f, 0.0f, -1.0f, 1.0f);
+Vector4 Vector4::Backward()
+{
+  return Vector4::Create(0.0f, 0.0f, -1.0f, 1.0f);
 }
 
-Vector4 Vector4::Up() {
-    return Vector4::Create(0.0f, 1.0f, 0.0f, 1.0f);
+Vector4 Vector4::Up()
+{
+  return Vector4::Create(0.0f, 1.0f, 0.0f, 1.0f);
 }
 
-Vector4 Vector4::Down() {
-    return Vector4::Create(0.0f, -1.0f, 0.0f, 1.0f);
+Vector4 Vector4::Down()
+{
+  return Vector4::Create(0.0f, -1.0f, 0.0f, 1.0f);
 }
 
-Vector4 Vector4::Left() {
-    return Vector4::Create(-1.0f, 0.0f, 0.0f, 1.0f);
+Vector4 Vector4::Left()
+{
+  return Vector4::Create(-1.0f, 0.0f, 0.0f, 1.0f);
 }
 
-Vector4 Vector4::Right() {
-    return Vector4::Create(1.0f, 0.0f, 0.0f, 1.0f);
+Vector4 Vector4::Right()
+{
+  return Vector4::Create(1.0f, 0.0f, 0.0f, 1.0f);
 }
 
-Vector4 Vector4::Lerp(const Vector4 &v1, const Vector4 &v2, float d) {
-    return v1 + (v2 - v1) * d;
+Vector4 Vector4::Lerp(const Vector4& v1, const Vector4& v2, float d)
+{
+  return v1 + (v2 - v1) * d;
 }
 
-Vector4 Vector4::Slerp(const Vector4 &v1, const Vector4 &v2, float d) {
-    // From: http://keithmaggio.wordpress.com/2011/02/15/math-magician-lerp-slerp-and-nlerp/
-    // Dot product - the cosine of the angle between 2 vectors.
-    float dot = Vector4::Dot(v1, v2);
-    // Clamp it to be in the range of Acos()
-    if(dot < -1.0f) dot = -1.0f;
-    if(dot > 1.0f) dot = 1.0f;
-    // Acos(dot) returns the angle between start and end,
-    // And multiplying that by percent returns the angle between
-    // start and the final result.
-    float theta = acosf(dot)*d;
-    Vector4 RelativeVec = v2 - v1*dot;
-    RelativeVec.normalize();     // Orthonormal basis
-    // The final result.
-    return ((v1*cosf(theta)) + (RelativeVec*sinf(theta)));
+Vector4 Vector4::Slerp(const Vector4& v1, const Vector4& v2, float d)
+{
+  // From: http://keithmaggio.wordpress.com/2011/02/15/math-magician-lerp-slerp-and-nlerp/
+  // Dot product - the cosine of the angle between 2 vectors.
+  float dot = Vector4::Dot(v1, v2);
+  // Clamp it to be in the range of Acos()
+  if (dot < -1.0f) dot = -1.0f;
+  if (dot > 1.0f) dot = 1.0f;
+  // Acos(dot) returns the angle between start and end,
+  // And multiplying that by percent returns the angle between
+  // start and the final result.
+  float theta = acosf(dot) * d;
+  Vector4 RelativeVec = v2 - v1 * dot;
+  RelativeVec.normalize();     // Orthonormal basis
+  // The final result.
+  return ((v1 * cosf(theta)) + (RelativeVec * sinf(theta)));
 }
 
-void Vector4::OrthoNormalize(Vector4 &normal, Vector4 &tangent) {
-    // Gram-Schmidt Orthonormalization
-    normal.normalize();
-    Vector4 proj = normal * Dot(tangent, normal);
-    tangent = tangent - proj;
-    tangent.normalize();
+void Vector4::OrthoNormalize(Vector4& normal, Vector4& tangent)
+{
+  // Gram-Schmidt Orthonormalization
+  normal.normalize();
+  Vector4 proj = normal * Dot(tangent, normal);
+  tangent = tangent - proj;
+  tangent.normalize();
 }
 
-Vector4 Vector4::operator +(const Vector4& b) const {
-    return Vector4::Create(x + b.x, y + b.y, z + b.z, w + b.w);
+Vector4 Vector4::operator +(const Vector4& b) const
+{
+  return Vector4::Create(x + b.x, y + b.y, z + b.z, w + b.w);
 }
-Vector4 Vector4::operator -(const Vector4& b) const {
-    return Vector4::Create(x - b.x, y - b.y, z - b.z, w - b.w);
+Vector4 Vector4::operator -(const Vector4& b) const
+{
+  return Vector4::Create(x - b.x, y - b.y, z - b.z, w - b.w);
 }
-Vector4 Vector4::operator +() const {
-    return *this;
+Vector4 Vector4::operator +() const
+{
+  return *this;
 }
-Vector4 Vector4::operator -() const {
-    return Vector4::Create(-x, -y, -z, -w);
-}
-
-Vector4 Vector4::operator *(const float v) const {
-    return Vector4::Create(x * v, y * v, z * v, w * v);
-}
-
-Vector4 Vector4::operator /(const float v) const {
-    return Vector4::Create(x / v, y / v, z / v, w/ v);
+Vector4 Vector4::operator -() const
+{
+  return Vector4::Create(-x, -y, -z, -w);
 }
 
-Vector4& Vector4::operator +=(const Vector4& b) {
-    x += b.x;
-    y += b.y;
-    z += b.z;
-    w += b.w;
-    
-    return *this;
+Vector4 Vector4::operator *(const float v) const
+{
+  return Vector4::Create(x * v, y * v, z * v, w * v);
 }
 
-Vector4& Vector4::operator -=(const Vector4& b) {
-    x -= b.x;
-    y -= b.y;
-    z -= b.z;
-    w -= b.w;
-    
-    return *this;
+Vector4 Vector4::operator /(const float v) const
+{
+  return Vector4::Create(x / v, y / v, z / v, w / v);
 }
 
-Vector4& Vector4::operator *=(const float v) {
-    x *= v;
-    y *= v;
-    z *= v;
-    w *= v;
-    
-    return *this;
+Vector4& Vector4::operator +=(const Vector4& b)
+{
+  x += b.x;
+  y += b.y;
+  z += b.z;
+  w += b.w;
+
+  return *this;
 }
 
-Vector4& Vector4::operator /=(const float v) {
-    float inv_v = 1.0f / v;
-    x *= inv_v;
-    y *= inv_v;
-    z *= inv_v;
-    w *= inv_v;
-    
-    return *this;
+Vector4& Vector4::operator -=(const Vector4& b)
+{
+  x -= b.x;
+  y -= b.y;
+  z -= b.z;
+  w -= b.w;
+
+  return *this;
 }
 
-bool Vector4::operator ==(const Vector4& b) const {
-    return x == b.x && y == b.y && z == b.z && w == b.w;
-    
-}
-bool Vector4::operator !=(const Vector4& b) const {
-    return x != b.x || y != b.y || z != b.z || w != b.w;
+Vector4& Vector4::operator *=(const float v)
+{
+  x *= v;
+  y *= v;
+  z *= v;
+  w *= v;
+
+  return *this;
 }
 
-float& Vector4::operator[](unsigned i) {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-            return y;
-        case 2:
-            return z;
-        default:
-        case 3:
-            return w;
-    }
+Vector4& Vector4::operator /=(const float v)
+{
+  float inv_v = 1.0f / v;
+  x *= inv_v;
+  y *= inv_v;
+  z *= inv_v;
+  w *= inv_v;
+
+  return *this;
 }
 
-float Vector4::operator[](unsigned i) const {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-            return y;
-        case 2:
-            return z;
-        default:
-        case 3:
-            return w;
-    }
+bool Vector4::operator ==(const Vector4& b) const
+{
+  return x == b.x && y == b.y && z == b.z && w == b.w;
+
+}
+bool Vector4::operator !=(const Vector4& b) const
+{
+  return x != b.x || y != b.y || z != b.z || w != b.w;
 }
 
-float Vector4::sqrMagnitude() const {
-    // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
-    return x * x + y * y + z * z + w * w;
+float& Vector4::operator[](unsigned i)
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+    return y;
+  case 2:
+    return z;
+  default:
+  case 3:
+    return w;
+  }
 }
 
-float Vector4::magnitude() const {
-    return sqrtf(x * x + y * y + z * z + w * w);
+float Vector4::operator[](unsigned i) const
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+    return y;
+  case 2:
+    return z;
+  default:
+  case 3:
+    return w;
+  }
 }
 
-void Vector4::normalize() {
-    float inv_magnitude = 1.0f / sqrtf(x * x + y * y + z * z + w * w);
-    x *= inv_magnitude;
-    y *= inv_magnitude;
-    z *= inv_magnitude;
-    w *= inv_magnitude;
+float Vector4::sqrMagnitude() const
+{
+  // calculate the square of the magnitude (useful for comparison of magnitudes without the cost of a sqrt() function)
+  return x * x + y * y + z * z + w * w;
 }
-Vector4 Vector4::Normalize(const Vector4 &v) {
-    float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
-    return Vector4::Create(v.x * inv_magnitude,
-                           v.y * inv_magnitude,
-                           v.z * inv_magnitude,
-                           v.w * inv_magnitude);
+
+float Vector4::magnitude() const
+{
+  return sqrtf(x * x + y * y + z * z + w * w);
+}
+
+void Vector4::normalize()
+{
+  float inv_magnitude = 1.0f / sqrtf(x * x + y * y + z * z + w * w);
+  x *= inv_magnitude;
+  y *= inv_magnitude;
+  z *= inv_magnitude;
+  w *= inv_magnitude;
+}
+Vector4 Vector4::Normalize(const Vector4& v)
+{
+  float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
+  return Vector4::Create(v.x * inv_magnitude,
+                         v.y * inv_magnitude,
+                         v.z * inv_magnitude,
+                         v.w * inv_magnitude);
 }
 
 
-float Vector4::Dot(const Vector4 &v1, const Vector4 &v2) {
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
+float Vector4::Dot(const Vector4& v1, const Vector4& v2)
+{
+  return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
 }
 
-Vector4 Vector4::Min(const Vector4 &v1, const Vector4 &v2) {
+Vector4 Vector4::Min(const Vector4& v1, const Vector4& v2)
+{
   return Vector4::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y), KRMIN(v1.z, v2.z), KRMIN(v1.w, v2.w));
 }
 
-Vector4 Vector4::Max(const Vector4 &v1, const Vector4 &v2) {
+Vector4 Vector4::Max(const Vector4& v1, const Vector4& v2)
+{
   return Vector4::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y), KRMAX(v1.z, v2.z), KRMAX(v1.w, v2.w));
 }
 
 bool Vector4::operator >(const Vector4& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x != b.x) return x > b.x;
-    if(y != b.y) return y > b.y;
-    if(z != b.z) return z > b.z;
-    if(w != b.w) return w > b.w;
-    return false;
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x != b.x) return x > b.x;
+  if (y != b.y) return y > b.y;
+  if (z != b.z) return z > b.z;
+  if (w != b.w) return w > b.w;
+  return false;
 }
 
 bool Vector4::operator <(const Vector4& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x != b.x) return x < b.x;
-    if(y != b.y) return y < b.y;
-    if(z != b.z) return z < b.z;
-    if(w != b.w) return w < b.w;
-    return false;
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x != b.x) return x < b.x;
+  if (y != b.y) return y < b.y;
+  if (z != b.z) return z < b.z;
+  if (w != b.w) return w < b.w;
+  return false;
 }
 
 } // namespace kraken

@@ -41,40 +41,41 @@ class Triangle3
 public:
   Vector3 vert[3];
 
-  void init(const Triangle3 &tri);
-  void init(const Vector3 &v1, const Vector3 &v2, const Vector3 &v3);
-  static Triangle3 Create(const Triangle3 &tri);
-  static Triangle3 Create(const Vector3 &v1, const Vector3 &v2, const Vector3 &v3);
-    
+  void init(const Triangle3& tri);
+  void init(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+  static Triangle3 Create(const Triangle3& tri);
+  static Triangle3 Create(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+
   Vector3 calculateNormal() const;
-    
+
   bool operator ==(const Triangle3& b) const;
   bool operator !=(const Triangle3& b) const;
   Vector3& operator[](unsigned int i);
   Vector3 operator[](unsigned int i) const;
-    
-  bool rayCast(const Vector3 &start, const Vector3 &dir, Vector3 &hit_point) const;
-  bool sphereCast(const Vector3 &start, const Vector3 &dir, float radius, Vector3 &hit_point, float &hit_distance) const;
-    
-  bool containsPoint(const Vector3 &p) const;
-  Vector3 closestPointOnTriangle(const Vector3 &p) const;
+
+  bool rayCast(const Vector3& start, const Vector3& dir, Vector3& hit_point) const;
+  bool sphereCast(const Vector3& start, const Vector3& dir, float radius, Vector3& hit_point, float& hit_distance) const;
+
+  bool containsPoint(const Vector3& p) const;
+  Vector3 closestPointOnTriangle(const Vector3& p) const;
 };
 static_assert(std::is_pod<Triangle3>::value, "kraken::Triangle3 must be a POD type.");
 
 } // namespace kraken
 
 namespace std {
-  template<>
-  struct hash<kraken::Triangle3> {
-  public:
-    size_t operator()(const kraken::Triangle3 &s) const
-    {
-      size_t h1 = hash<kraken::Vector3>()(s.vert[0]);
-      size_t h2 = hash<kraken::Vector3>()(s.vert[1]);
-      size_t h3 = hash<kraken::Vector3>()(s.vert[2]);
-      return h1 ^ (h2 << 1) ^ (h3 << 2);
-    }
-  };
+template<>
+struct hash<kraken::Triangle3>
+{
+public:
+  size_t operator()(const kraken::Triangle3& s) const
+  {
+    size_t h1 = hash<kraken::Vector3>()(s.vert[0]);
+    size_t h2 = hash<kraken::Vector3>()(s.vert[1]);
+    size_t h3 = hash<kraken::Vector3>()(s.vert[2]);
+    return h1 ^ (h2 << 1) ^ (h3 << 2);
+  }
+};
 } // namespace std
 
 #endif // KRAKEN_TRIANGLE3_H

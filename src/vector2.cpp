@@ -34,237 +34,268 @@
 
 namespace kraken {
 
-void Vector2::init() {
-    x = 0.0;
-    y = 0.0;
+void Vector2::init()
+{
+  x = 0.0;
+  y = 0.0;
 }
 
 Vector2 Vector2::Create()
 {
-    Vector2 r;
-    r.init();
-    return r;
+  Vector2 r;
+  r.init();
+  return r;
 }
 
-void Vector2::init(float X, float Y) {
-    x = X;
-    y = Y;
+void Vector2::init(float X, float Y)
+{
+  x = X;
+  y = Y;
 }
 
 Vector2 Vector2::Create(float X, float Y)
 {
-    Vector2 r;
-    r.init(X,Y);
-    return r;
+  Vector2 r;
+  r.init(X, Y);
+  return r;
 }
 
-void Vector2::init(float v) {
-    x = v;
-    y = v;
+void Vector2::init(float v)
+{
+  x = v;
+  y = v;
 }
 
 Vector2 Vector2::Create(float v)
 {
-    Vector2 r;
-    r.init(v);
-    return r;
+  Vector2 r;
+  r.init(v);
+  return r;
 }
 
-void Vector2::init(float *v) {
-    x = v[0];
-    y = v[1];
-}
-
-Vector2 Vector2::Create(float *v)
+void Vector2::init(float* v)
 {
-    Vector2 r;
-    r.init(v);
-    return r;
+  x = v[0];
+  y = v[1];
 }
 
-void Vector2::init(const Vector2 &v) {
-    x = v.x;
-    y = v.y;
-}
-
-Vector2 Vector2::Create(const Vector2 &v)
+Vector2 Vector2::Create(float* v)
 {
-    Vector2 r;
-    r.init(v);
-    return r;
+  Vector2 r;
+  r.init(v);
+  return r;
+}
+
+void Vector2::init(const Vector2& v)
+{
+  x = v.x;
+  y = v.y;
+}
+
+Vector2 Vector2::Create(const Vector2& v)
+{
+  Vector2 r;
+  r.init(v);
+  return r;
 }
 
 // Vector2 swizzle getters
 Vector2 Vector2::yx() const
 {
-    return Vector2::Create(y,x);
+  return Vector2::Create(y, x);
 }
 
 // Vector2 swizzle setters
-void Vector2::yx(const Vector2 &v)
+void Vector2::yx(const Vector2& v)
 {
-    y = v.x;
-    x = v.y;
+  y = v.x;
+  x = v.y;
 }
 
-Vector2 Vector2::Min() {
-    return Vector2::Create(-std::numeric_limits<float>::max());
+Vector2 Vector2::Min()
+{
+  return Vector2::Create(-std::numeric_limits<float>::max());
 }
 
-Vector2 Vector2::Max() {
-    return Vector2::Create(std::numeric_limits<float>::max());
+Vector2 Vector2::Max()
+{
+  return Vector2::Create(std::numeric_limits<float>::max());
 }
 
-Vector2 Vector2::Zero() {
-    return Vector2::Create(0.0f);
+Vector2 Vector2::Zero()
+{
+  return Vector2::Create(0.0f);
 }
 
-Vector2 Vector2::One() {
-    return Vector2::Create(1.0f);
+Vector2 Vector2::One()
+{
+  return Vector2::Create(1.0f);
 }
 
-Vector2 Vector2::operator +(const Vector2& b) const {
-    return Vector2::Create(x + b.x, y + b.y);
+Vector2 Vector2::operator +(const Vector2& b) const
+{
+  return Vector2::Create(x + b.x, y + b.y);
 }
 
-Vector2 Vector2::operator -(const Vector2& b) const {
-    return Vector2::Create(x - b.x, y - b.y);
+Vector2 Vector2::operator -(const Vector2& b) const
+{
+  return Vector2::Create(x - b.x, y - b.y);
 }
 
-Vector2 Vector2::operator +() const {
-    return *this;
+Vector2 Vector2::operator +() const
+{
+  return *this;
 }
 
-Vector2 Vector2::operator -() const {
-    return Vector2::Create(-x, -y);
+Vector2 Vector2::operator -() const
+{
+  return Vector2::Create(-x, -y);
 }
 
-Vector2 Vector2::operator *(const float v) const {
-    return Vector2::Create(x * v, y * v);
+Vector2 Vector2::operator *(const float v) const
+{
+  return Vector2::Create(x * v, y * v);
 }
 
-Vector2 Vector2::operator /(const float v) const {
-    float inv_v = 1.0f / v;
-    return Vector2::Create(x * inv_v, y * inv_v);
+Vector2 Vector2::operator /(const float v) const
+{
+  float inv_v = 1.0f / v;
+  return Vector2::Create(x * inv_v, y * inv_v);
 }
 
-Vector2& Vector2::operator +=(const Vector2& b) {
-    x += b.x;
-    y += b.y;
-    return *this;
+Vector2& Vector2::operator +=(const Vector2& b)
+{
+  x += b.x;
+  y += b.y;
+  return *this;
 }
 
-Vector2& Vector2::operator -=(const Vector2& b) {
-    x -= b.x;
-    y -= b.y;
-    return *this;
-}
-
-
-
-Vector2& Vector2::operator *=(const float v) {
-    x *= v;
-    y *= v;
-    return *this;
-}
-
-Vector2& Vector2::operator /=(const float v) {
-    float inv_v = 1.0f / v;
-    x *= inv_v;
-    y *= inv_v;
-    return *this;
+Vector2& Vector2::operator -=(const Vector2& b)
+{
+  x -= b.x;
+  y -= b.y;
+  return *this;
 }
 
 
-bool Vector2::operator ==(const Vector2& b) const {
-    return x == b.x && y == b.y;
+
+Vector2& Vector2::operator *=(const float v)
+{
+  x *= v;
+  y *= v;
+  return *this;
 }
 
-bool Vector2::operator !=(const Vector2& b) const {
-    return x != b.x || y != b.y;
+Vector2& Vector2::operator /=(const float v)
+{
+  float inv_v = 1.0f / v;
+  x *= inv_v;
+  y *= inv_v;
+  return *this;
+}
+
+
+bool Vector2::operator ==(const Vector2& b) const
+{
+  return x == b.x && y == b.y;
+}
+
+bool Vector2::operator !=(const Vector2& b) const
+{
+  return x != b.x || y != b.y;
 }
 
 bool Vector2::operator >(const Vector2& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x > b.x) {
-        return true;
-    } else if(x < b.x) {
-        return false;
-    } else if(y > b.y) {
-        return true;
-    } else {
-        return false;
-    }
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x > b.x) {
+    return true;
+  } else if (x < b.x) {
+    return false;
+  } else if (y > b.y) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 bool Vector2::operator <(const Vector2& b) const
 {
-    // Comparison operators are implemented to allow insertion into sorted containers such as std::set
-    if(x < b.x) {
-        return true;
-    } else if(x > b.x) {
-        return false;
-    } else if(y < b.y) {
-        return true;
-    } else {
-        return false;
-    }
+  // Comparison operators are implemented to allow insertion into sorted containers such as std::set
+  if (x < b.x) {
+    return true;
+  } else if (x > b.x) {
+    return false;
+  } else if (y < b.y) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-float& Vector2::operator[] (unsigned i) {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-        default:
-            return y;
-    }
+float& Vector2::operator[] (unsigned i)
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+  default:
+    return y;
+  }
 }
 
-float Vector2::operator[](unsigned i) const {
-    switch(i) {
-        case 0:
-            return x;
-        case 1:
-        default:
-            return y;
-    }
+float Vector2::operator[](unsigned i) const
+{
+  switch (i) {
+  case 0:
+    return x;
+  case 1:
+  default:
+    return y;
+  }
 }
 
-void Vector2::normalize() {
-    float inv_magnitude = 1.0f / sqrtf(x * x + y * y);
-    x *= inv_magnitude;
-    y *= inv_magnitude;
+void Vector2::normalize()
+{
+  float inv_magnitude = 1.0f / sqrtf(x * x + y * y);
+  x *= inv_magnitude;
+  y *= inv_magnitude;
 }
 
-float Vector2::sqrMagnitude() const {
-    return x * x + y * y;
+float Vector2::sqrMagnitude() const
+{
+  return x * x + y * y;
 }
 
-float Vector2::magnitude() const {
-    return sqrtf(x * x + y * y);
+float Vector2::magnitude() const
+{
+  return sqrtf(x * x + y * y);
 }
 
 
-Vector2 Vector2::Normalize(const Vector2 &v) {
-    float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y);
-    return Vector2::Create(v.x * inv_magnitude, v.y * inv_magnitude);
+Vector2 Vector2::Normalize(const Vector2& v)
+{
+  float inv_magnitude = 1.0f / sqrtf(v.x * v.x + v.y * v.y);
+  return Vector2::Create(v.x * inv_magnitude, v.y * inv_magnitude);
 }
 
-float Vector2::Cross(const Vector2 &v1, const Vector2 &v2) {
-    return v1.x * v2.y - v1.y * v2.x;
+float Vector2::Cross(const Vector2& v1, const Vector2& v2)
+{
+  return v1.x * v2.y - v1.y * v2.x;
 }
 
-float Vector2::Dot(const Vector2 &v1, const Vector2 &v2) {
-    return v1.x * v2.x + v1.y * v2.y;
+float Vector2::Dot(const Vector2& v1, const Vector2& v2)
+{
+  return v1.x * v2.x + v1.y * v2.y;
 }
 
-Vector2 Vector2::Min(const Vector2 &v1, const Vector2 &v2) {
+Vector2 Vector2::Min(const Vector2& v1, const Vector2& v2)
+{
   return Vector2::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y));
 }
 
-Vector2 Vector2::Max(const Vector2 &v1, const Vector2 &v2) {
+Vector2 Vector2::Max(const Vector2& v1, const Vector2& v2)
+{
   return Vector2::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y));
 }
 
