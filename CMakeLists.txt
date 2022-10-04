@@ -19,6 +19,7 @@ set(PUBLIC_HEADERS
   include/vector3.h
   include/vector4.h
   include/vector2i.h
+  include/vector3i.h
 )
 
 set(SRCS
@@ -34,6 +35,7 @@ set(SRCS
   src/vector3.cpp
   src/vector4.cpp
   src/vector2i.cpp
+  src/vector3i.cpp
 )
 
 add_library(hydra ${SRCS} ${PUBLIC_HEADERS})

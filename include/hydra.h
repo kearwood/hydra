@@ -37,6 +37,7 @@
 #include "vector3.h"
 #include "vector4.h"
 #include "vector2i.h"
+#include "vector3i.h"
 #include "matrix2.h"
 #include "matrix2x3.h"
 #include "matrix4.h"
