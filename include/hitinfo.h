@@ -29,14 +29,13 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_HITINFO_H
-#define KRAKEN_HITINFO_H
+#pragma once
 
 #include "vector3.h"
 
 class KRNode;
 
-namespace kraken {
+namespace hydra {
 
 class HitInfo
 {
@@ -61,6 +60,5 @@ private:
   float m_distance;
 };
 
-} // namespace kraken
+} // namespace hydra
 
-#endif

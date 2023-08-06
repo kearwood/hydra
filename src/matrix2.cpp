@@ -33,7 +33,7 @@
 
 #include <string.h>
 
-namespace kraken {
+namespace hydra {
 
 void Matrix2::init()
 {
@@ -216,5 +216,5 @@ Matrix2 Matrix2::Identity()
   return m;
 }
 
-} // namespace kraken
+} // namespace hydra
 

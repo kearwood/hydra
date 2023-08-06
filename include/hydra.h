@@ -29,8 +29,7 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_HYDRA_H
-#define KRAKEN_HYDRA_H
+#pragma once
 
 #include "scalar.h"
 #include "vector2.h"
@@ -45,5 +44,3 @@
 #include "aabb.h"
 #include "triangle3.h"
 #include "hitinfo.h"
-
-#endif // KRAKEN_HYDRA_H

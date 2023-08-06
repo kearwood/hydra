@@ -33,7 +33,7 @@
 
 #include "krhelpers.h"
 
-namespace kraken {
+namespace hydra {
 
 void Quaternion::init()
 {
@@ -458,4 +458,4 @@ Quaternion Quaternion::Slerp(const Quaternion& a, const Quaternion& b, float t)
   return (c * sinf((1.0f - t) * halftheta) + b * sinf(t * halftheta)) / sinf(halftheta);
 }
 
-} // namespace kraken
+} // namespace hydra

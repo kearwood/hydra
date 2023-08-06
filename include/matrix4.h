@@ -33,10 +33,9 @@
 #include "vector3.h"
 #include "vector4.h"
 
-#ifndef KRAKEN_MATRIX4_H
-#define KRAKEN_MATRIX4_H
+#pragma once
 
-namespace kraken {
+namespace hydra {
 
 enum class AXIS
 {
@@ -114,24 +113,22 @@ public:
   static Matrix4 Scaling(const Vector3& v);
   static Matrix4 Identity();
 };
-static_assert(std::is_pod<Matrix4>::value, "kraken::Matrix4 must be a POD type.");
+static_assert(std::is_pod<Matrix4>::value, "hydra::Matrix4 must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Matrix4>
+struct hash<hydra::Matrix4>
 {
 public:
-  size_t operator()(const kraken::Matrix4& s) const
+  size_t operator()(const hydra::Matrix4& s) const
   {
-    size_t h1 = hash<kraken::Vector4>()(s.axis_x);
-    size_t h2 = hash<kraken::Vector4>()(s.axis_y);
-    size_t h3 = hash<kraken::Vector4>()(s.axis_z);
-    size_t h4 = hash<kraken::Vector4>()(s.transform);
+    size_t h1 = hash<hydra::Vector4>()(s.axis_x);
+    size_t h2 = hash<hydra::Vector4>()(s.axis_y);
+    size_t h3 = hash<hydra::Vector4>()(s.axis_z);
+    size_t h4 = hash<hydra::Vector4>()(s.transform);
     return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
   }
 };
 } // namespace std
-
-#endif // KRAKEN_MATRIX4_H

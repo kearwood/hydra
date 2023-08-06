@@ -32,7 +32,7 @@
 #include "../include/hydra.h"
 #include "krhelpers.h"
 
-namespace kraken {
+namespace hydra {
 
 void Vector2::init()
 {
@@ -299,4 +299,4 @@ Vector2 Vector2::Max(const Vector2& v1, const Vector2& v2)
   return Vector2::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y));
 }
 
-} // namepsace kraken
+} // namepsace hydra

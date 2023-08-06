@@ -29,14 +29,12 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_SCALAR_H
-#define KRAKEN_SCALAR_H
+#pragma once
 
-namespace kraken {
+namespace hydra {
 
 float SmoothStep(float a, float b, float t);
 float Lerp(float a, float b, float t);
 
-}; // namespace kraken
+}; // namespace hydra
 
-#endif // KRAKEN_SCALAR_H

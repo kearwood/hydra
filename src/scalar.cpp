@@ -31,7 +31,7 @@
 
 #include "../include/hydra.h"
 
-namespace kraken {
+namespace hydra {
 
 float SmoothStep(float a, float b, float t)
 {
@@ -44,4 +44,4 @@ float Lerp(float a, float b, float t)
   return (a + (b - a) * t);
 }
 
-} // namespace kraken
+} // namespace hydra

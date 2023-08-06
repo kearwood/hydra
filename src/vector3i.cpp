@@ -32,7 +32,7 @@
 #include "../include/hydra.h"
 #include "krhelpers.h"
 
-namespace kraken {
+namespace hydra {
 
 //default constructor
 void Vector3i::init()
@@ -417,4 +417,4 @@ bool Vector3i::operator <(const Vector3i& b) const
   }
 }
 
-} // namespace kraken
+} // namespace hydra

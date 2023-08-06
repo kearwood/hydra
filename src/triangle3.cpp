@@ -31,7 +31,7 @@
 
 #include "../include/hydra.h"
 
-using namespace kraken;
+using namespace hydra;
 
 namespace {
 bool _intersectSphere(const Vector3& start, const Vector3& dir, const Vector3& sphere_center, float sphere_radius, float& distance)
@@ -96,7 +96,7 @@ Vector3 _closestPointOnLine(const Vector3& a, const Vector3& b, const Vector3& p
 }
 } // anonymous namespace
 
-namespace kraken {
+namespace hydra {
 
 void Triangle3::init(const Vector3& v1, const Vector3& v2, const Vector3& v3)
 {
@@ -350,4 +350,4 @@ bool Triangle3::containsPoint(const Vector3& p) const
   return (r + t <= 1);
 }
 
-} // namespace kraken
+} // namespace hydra

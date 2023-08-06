@@ -29,12 +29,11 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_QUATERNION_H
-#define KRAKEN_QUATERNION_H
+#pragma once
 
 #include "vector3.h"
 
-namespace kraken {
+namespace hydra {
 
 class Quaternion
 {
@@ -99,16 +98,16 @@ public:
   static Quaternion Slerp(const Quaternion& a, const Quaternion& b, float t);
   static float Dot(const Quaternion& v1, const Quaternion& v2);
 };
-static_assert(std::is_pod<Quaternion>::value, "kraken::Quaternion must be a POD type.");
+static_assert(std::is_pod<Quaternion>::value, "hydra::Quaternion must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Quaternion>
+struct hash<hydra::Quaternion>
 {
 public:
-  size_t operator()(const kraken::Quaternion& s) const
+  size_t operator()(const hydra::Quaternion& s) const
   {
     size_t h1 = hash<float>()(s.c[0]);
     size_t h2 = hash<float>()(s.c[1]);
@@ -118,5 +117,3 @@ public:
   }
 };
 } // namespace std
-
-#endif // KRAKEN_QUATERNION_H

@@ -29,14 +29,13 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_VECTOR2_H
-#define KRAKEN_VECTOR2_H
+#pragma once
 
 #include <functional> // for hash<>
 #include <limits> // for std::numeric_limits<>
 #include <math.h> // for sqrtf
 
-namespace kraken {
+namespace hydra {
 
 class Vector2
 {
@@ -105,16 +104,16 @@ public:
   static Vector2 Zero();
   static Vector2 One();
 };
-static_assert(std::is_pod<Vector2>::value, "kraken::Vector2 must be a POD type.");
+static_assert(std::is_pod<Vector2>::value, "hydra::Vector2 must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Vector2>
+struct hash<hydra::Vector2>
 {
 public:
-  size_t operator()(const kraken::Vector2& s) const
+  size_t operator()(const hydra::Vector2& s) const
   {
     size_t h1 = hash<float>()(s.x);
     size_t h2 = hash<float>()(s.y);
@@ -122,5 +121,3 @@ public:
   }
 };
 } // namespace std
-
-#endif // KRAKEN_VECTOR2_H

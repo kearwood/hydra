@@ -35,7 +35,7 @@
 
 #include "vector2i.h"
 
-namespace kraken {
+namespace hydra {
 
 class Vector3i
 {
@@ -125,16 +125,16 @@ public:
   static Vector3i Right();
   static Vector3i Scale(const Vector3i& v1, const Vector3i& v2);
 };
-static_assert(std::is_pod<Vector3i>::value, "kraken::Vector3i must be a POD type.");
+static_assert(std::is_pod<Vector3i>::value, "hydra::Vector3i must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Vector3i>
+struct hash<hydra::Vector3i>
 {
 public:
-  size_t operator()(const kraken::Vector3i& s) const
+  size_t operator()(const hydra::Vector3i& s) const
   {
     size_t h1 = hash<int>()(s.x);
     size_t h2 = hash<int>()(s.y);

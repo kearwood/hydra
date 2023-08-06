@@ -33,7 +33,7 @@
 
 #include <functional> // for hash<>
 
-namespace kraken {
+namespace hydra {
 
 class Vector3;
 
@@ -109,16 +109,16 @@ public:
   static Vector4 Slerp(const Vector4& v1, const Vector4& v2, float d);
   static void OrthoNormalize(Vector4& normal, Vector4& tangent); // Gram-Schmidt Orthonormalization
 };
-static_assert(std::is_pod<Vector4>::value, "kraken::Vector4 must be a POD type.");
+static_assert(std::is_pod<Vector4>::value, "hydra::Vector4 must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Vector4>
+struct hash<hydra::Vector4>
 {
 public:
-  size_t operator()(const kraken::Vector4& s) const
+  size_t operator()(const hydra::Vector4& s) const
   {
     size_t h1 = hash<float>()(s.x);
     size_t h2 = hash<float>()(s.y);

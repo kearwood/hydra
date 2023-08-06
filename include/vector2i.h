@@ -35,7 +35,7 @@
 #include <limits> // for std::numeric_limits<>
 #include <math.h> // for sqrtf
 
-namespace kraken {
+namespace hydra {
 
 class Vector2i
 {
@@ -105,16 +105,16 @@ public:
   static Vector2i Zero();
   static Vector2i One();
 }; // class Vector2i
-static_assert(std::is_pod<Vector2i>::value, "kraken::Vector2i must be a POD type.");
+static_assert(std::is_pod<Vector2i>::value, "hydra::Vector2i must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Vector2i>
+struct hash<hydra::Vector2i>
 {
 public:
-  size_t operator()(const kraken::Vector2i& s) const
+  size_t operator()(const hydra::Vector2i& s) const
   {
     size_t h1 = hash<int>()(s.x);
     size_t h2 = hash<int>()(s.y);

@@ -29,12 +29,11 @@
 //  or implied, of Kearwood Gilbert.
 //
 
-#ifndef KRAKEN_TRIANGLE3_H
-#define KRAKEN_TRIANGLE3_H
+#pragma once
 
 #include "vector3.h"
 
-namespace kraken {
+namespace hydra {
 
 class Triangle3
 {
@@ -59,23 +58,21 @@ public:
   bool containsPoint(const Vector3& p) const;
   Vector3 closestPointOnTriangle(const Vector3& p) const;
 };
-static_assert(std::is_pod<Triangle3>::value, "kraken::Triangle3 must be a POD type.");
+static_assert(std::is_pod<Triangle3>::value, "hydra::Triangle3 must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Triangle3>
+struct hash<hydra::Triangle3>
 {
 public:
-  size_t operator()(const kraken::Triangle3& s) const
+  size_t operator()(const hydra::Triangle3& s) const
   {
-    size_t h1 = hash<kraken::Vector3>()(s.vert[0]);
-    size_t h2 = hash<kraken::Vector3>()(s.vert[1]);
-    size_t h3 = hash<kraken::Vector3>()(s.vert[2]);
+    size_t h1 = hash<hydra::Vector3>()(s.vert[0]);
+    size_t h2 = hash<hydra::Vector3>()(s.vert[1]);
+    size_t h3 = hash<hydra::Vector3>()(s.vert[2]);
     return h1 ^ (h2 << 1) ^ (h3 << 2);
   }
 };
 } // namespace std
-
-#endif // KRAKEN_TRIANGLE3_H

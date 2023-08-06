@@ -32,10 +32,9 @@
 #include "vector2.h"
 #include "vector3.h"
 
-#ifndef KRAKEN_MATRIX2X3_H
-#define KRAKEN_MATRIX2X3_H
+#pragma once
 
-namespace kraken {
+namespace hydra {
 
 class Matrix2x3
 {
@@ -91,23 +90,22 @@ public:
   static Matrix2x3 Scaling(const Vector2& v);
   static Matrix2x3 Identity();
 };
-static_assert(std::is_pod<Matrix2x3>::value, "kraken::Matrix2x3 must be a POD type.");
+static_assert(std::is_pod<Matrix2x3>::value, "hydra::Matrix2x3 must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::Matrix2x3>
+struct hash<hydra::Matrix2x3>
 {
 public:
-  size_t operator()(const kraken::Matrix2x3& s) const
+  size_t operator()(const hydra::Matrix2x3& s) const
   {
-    size_t h1 = hash<kraken::Vector2>()(s.axis_x);
-    size_t h2 = hash<kraken::Vector2>()(s.axis_y);
-    size_t h3 = hash<kraken::Vector2>()(s.transform);
+    size_t h1 = hash<hydra::Vector2>()(s.axis_x);
+    size_t h2 = hash<hydra::Vector2>()(s.axis_y);
+    size_t h3 = hash<hydra::Vector2>()(s.transform);
     return h1 ^ (h2 << 1) ^ (h3 << 2);
   }
 };
 } // namespace std
 
-#endif // KRAKEN_MATRIX2X3_H

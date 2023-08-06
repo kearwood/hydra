@@ -31,15 +31,14 @@
 
 // Axis aligned bounding box (AABB)
 
-#ifndef KRAKEN_AABB_H
-#define KRAKEN_AABB_H
+#pragma once
 
 #include <functional> // for hash<>
 
 #include "vector2.h"
 #include "vector3.h"
 
-namespace kraken {
+namespace hydra {
 
 class Matrix4;
 
@@ -84,23 +83,20 @@ public:
   float longest_radius() const;
   Vector3 nearestPoint(const Vector3& v) const;
 };
-static_assert(std::is_pod<AABB>::value, "kraken::AABB must be a POD type.");
+static_assert(std::is_pod<AABB>::value, "hydra::AABB must be a POD type.");
 
-} // namespace kraken
+} // namespace hydra
 
 namespace std {
 template<>
-struct hash<kraken::AABB>
+struct hash<hydra::AABB>
 {
 public:
-  size_t operator()(const kraken::AABB& s) const
+  size_t operator()(const hydra::AABB& s) const
   {
-    size_t h1 = hash<kraken::Vector3>()(s.min);
-    size_t h2 = hash<kraken::Vector3>()(s.max);
+    size_t h1 = hash<hydra::Vector3>()(s.min);
+    size_t h2 = hash<hydra::Vector3>()(s.max);
     return h1 ^ (h2 << 1);
   }
 };
 } // namespace std
-
-
-#endif /* defined(KRAKEN_AABB_H) */

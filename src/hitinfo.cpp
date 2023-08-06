@@ -31,7 +31,7 @@
 
 #include "../include/hydra.h"
 
-namespace kraken {
+namespace hydra {
 
 HitInfo::HitInfo()
 {
@@ -96,5 +96,5 @@ HitInfo& HitInfo::operator =(const HitInfo& b)
   return *this;
 }
 
-} // namespace kraken
+} // namespace hydra
 
