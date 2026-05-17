@@ -53,6 +53,7 @@ public:
   void init();
   static AABB Create(const Vector3& minPoint, const Vector3& maxPoint);
   static AABB Create(const Vector3& corner1, const Vector3& corner2, const Matrix4& modelMatrix);
+  static AABB Create(const AABB& modelSpaceExtents, const Matrix4& modelMatrix);
   static AABB Create();
 
   void scale(const Vector3& s);
@@ -69,6 +70,7 @@ public:
   bool intersectsRay(const Vector3& v1, const Vector3& dir) const;
   bool intersectsSphere(const Vector3& center, float radius) const;
   void encapsulate(const AABB& b);
+  void encapsulate(const Vector3& v);
 
   bool operator ==(const AABB& b) const;
   bool operator !=(const AABB& b) const;

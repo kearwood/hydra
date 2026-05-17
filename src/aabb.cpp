@@ -91,6 +91,13 @@ AABB AABB::Create(const Vector3& corner1, const Vector3& corner2, const Matrix4&
   return r;
 }
 
+AABB AABB::Create(const AABB& modelSpaceExtents, const Matrix4& modelMatrix)
+{
+  AABB r;
+  r.init(modelSpaceExtents.min, modelSpaceExtents.max, modelMatrix);
+  return r;
+}
+
 bool AABB::operator ==(const AABB& b) const
 {
   return min == b.min && max == b.max;
@@ -364,6 +371,17 @@ void AABB::encapsulate(const AABB& b)
   if (b.max.x > max.x) max.x = b.max.x;
   if (b.max.y > max.y) max.y = b.max.y;
   if (b.max.z > max.z) max.z = b.max.z;
+}
+
+void AABB::encapsulate(const Vector3& v)
+{
+  if (v.x < min.x) min.x = v.x;
+  if (v.y < min.y) min.y = v.y;
+  if (v.z < min.z) min.z = v.z;
+  
+  if (v.x > max.x) max.x = v.x;
+  if (v.y > max.y) max.y = v.y;
+  if (v.z > max.z) max.z = v.z;
 }
 
 Vector3 AABB::nearestPoint(const Vector3& v) const
