@@ -373,12 +373,12 @@ int Vector3i::Dot(const Vector3i& v1, const Vector3i& v2)
 
 Vector3i Vector3i::Min(const Vector3i& v1, const Vector3i& v2)
 {
-  return Vector3i::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y), KRMIN(v1.z, v2.z));
+  return Vector3i::Create(std::min(v1.x, v2.x), std::min(v1.y, v2.y), std::min(v1.z, v2.z));
 }
 
 Vector3i Vector3i::Max(const Vector3i& v1, const Vector3i& v2)
 {
-  return Vector3i::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y), KRMAX(v1.z, v2.z));
+  return Vector3i::Create(std::max(v1.x, v2.x), std::max(v1.y, v2.y), std::max(v1.z, v2.z));
 }
 
 bool Vector3i::operator >(const Vector3i& b) const

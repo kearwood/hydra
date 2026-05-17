@@ -32,6 +32,7 @@
 #include "../include/hydra.h"
 #include "assert.h"
 #include "krhelpers.h"
+#include <algorithm>
 
 namespace hydra {
 
@@ -386,7 +387,7 @@ void AABB::encapsulate(const Vector3& v)
 
 Vector3 AABB::nearestPoint(const Vector3& v) const
 {
-  return Vector3::Create(KRCLAMP(v.x, min.x, max.x), KRCLAMP(v.y, min.y, max.y), KRCLAMP(v.z, min.z, max.z));
+  return Vector3::Create(std::clamp(v.x, min.x, max.x), std::clamp(v.y, min.y, max.y), std::clamp(v.z, min.z, max.z));
 }
 
 } // namespace hydra

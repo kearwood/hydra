@@ -351,12 +351,12 @@ float Vector4::Dot(const Vector4& v1, const Vector4& v2)
 
 Vector4 Vector4::Min(const Vector4& v1, const Vector4& v2)
 {
-  return Vector4::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y), KRMIN(v1.z, v2.z), KRMIN(v1.w, v2.w));
+  return Vector4::Create(std::min(v1.x, v2.x), std::min(v1.y, v2.y), std::min(v1.z, v2.z), std::min(v1.w, v2.w));
 }
 
 Vector4 Vector4::Max(const Vector4& v1, const Vector4& v2)
 {
-  return Vector4::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y), KRMAX(v1.z, v2.z), KRMAX(v1.w, v2.w));
+  return Vector4::Create(std::max(v1.x, v2.x), std::max(v1.y, v2.y), std::max(v1.z, v2.z), std::max(v1.w, v2.w));
 }
 
 bool Vector4::operator >(const Vector4& b) const

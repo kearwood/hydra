@@ -291,12 +291,12 @@ float Vector2::Dot(const Vector2& v1, const Vector2& v2)
 
 Vector2 Vector2::Min(const Vector2& v1, const Vector2& v2)
 {
-  return Vector2::Create(KRMIN(v1.x, v2.x), KRMIN(v1.y, v2.y));
+  return Vector2::Create(std::min(v1.x, v2.x), std::min(v1.y, v2.y));
 }
 
 Vector2 Vector2::Max(const Vector2& v1, const Vector2& v2)
 {
-  return Vector2::Create(KRMAX(v1.x, v2.x), KRMAX(v1.y, v2.y));
+  return Vector2::Create(std::max(v1.x, v2.x), std::max(v1.y, v2.y));
 }
 
 } // namepsace hydra
