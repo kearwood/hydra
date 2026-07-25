@@ -34,6 +34,7 @@
 #pragma once
 
 #include <functional> // for hash<>
+#include <type_traits>
 
 #include "vector2.h"
 #include "vector3.h"

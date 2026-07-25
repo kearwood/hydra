@@ -34,6 +34,7 @@
 #include <functional> // for hash<>
 #include <limits> // for std::numeric_limits<>
 #include <math.h> // for sqrtf
+#include <type_traits>
 
 namespace hydra {
 

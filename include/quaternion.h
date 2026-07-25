@@ -32,6 +32,7 @@
 #pragma once
 
 #include "vector3.h"
+#include <type_traits>
 
 namespace hydra {
 

@@ -29,10 +29,11 @@
 //  or implied, of Kearwood Gilbert.
 //
 
+#pragma once
+
 #include "vector2.h"
 #include "vector3.h"
-
-#pragma once
+#include <type_traits>
 
 namespace hydra {
 

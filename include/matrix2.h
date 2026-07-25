@@ -28,10 +28,10 @@
 //  authors and should not be interpreted as representing official policies, either expressed
 //  or implied, of Kearwood Gilbert.
 //
+#pragma once
 
 #include "vector2.h"
-
-#pragma once
+#include <type_traits>
 
 namespace hydra {
 

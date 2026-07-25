@@ -32,6 +32,7 @@
 #pragma once
 
 #include <functional> // for hash<>
+#include <type_traits>
 
 namespace hydra {
 
